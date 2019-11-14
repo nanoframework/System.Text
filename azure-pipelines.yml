@@ -10,7 +10,7 @@ trigger:
     - CHANGELOG.md
     - /*.md
     - .gitignore
-    - appveyor.yml
+    - README.md
   # waiting for feature to become available
   # tags:
   #   include:
