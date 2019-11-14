@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>nanoFramework.System.Text</id>
+    <version>$version$</version>
+    <title>nanoFramework.System.Text</title>
+    <authors>nanoFramework project contributors</authors>
+    <owners>nanoFramework project contributors</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <license type="expression">Apache-2.0</license>
+    <releaseNotes>
+    </releaseNotes>
+    <developmentDependency>false</developmentDependency>
+    <projectUrl>https://github.com/nanoframework/lib-nanoFramework.System.Text</projectUrl>
+    <iconUrl>https://secure.gravatar.com/avatar/97d0e092247f0716db6d4b47b7d1d1ad</iconUrl>
+    <repository type="git" url="https://github.com/nanoframework/lib-nanoFramework.System.Text" commit="$commit$" />
+    <copyright>Copyright (c) 2018 The nanoFramework project contributors</copyright>
+    <description>This package includes the System.Text assembly for nanoFramework C# projects.
+This package requires a target with nanoFramework.System.Text v$nativeVersion$.</description>
+    <summary>System.Text assembly for nanoFramework C# projects</summary>
+    <tags>nanoFramework C# csharp netmf netnf nanoFramework.System.Text</tags>
+    <dependencies>
+      <dependency id="nanoFramework.CoreLibrary" version="1.6.0-preview.1" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="nanoFramework.System.Text\bin\Release\nanoFramework.System.Text.dll" target="lib\nanoFramework.System.Text.dll" />
+    <file src="nanoFramework.System.Text\bin\Release\nanoFramework.System.Text.pdb" target="lib\nanoFramework.System.Text.pdb" />
+    <file src="nanoFramework.System.Text\bin\Release\nanoFramework.System.Text.pdbx" target="lib\nanoFramework.System.Text.pdbx" />
+    <file src="nanoFramework.System.Text\bin\Release\nanoFramework.System.Text.pe" target="lib\nanoFramework.System.Text.pe" />
+    <file src="nanoFramework.System.Text\bin\Release\nanoFramework.System.Text.xml" target="lib\nanoFramework.System.Text.xml" />
+    <!-- readme -->
+    <file src="readme.txt" target="readme.txt" />
+  </files>
+</package>
