@@ -31,43 +31,85 @@ resources:
       name: nanoframework/nf-tools
       endpoint: nanoframework
 
-pool:
-  vmImage: 'VS2017-Win2016'
+jobs:
 
-variables:
-  solution: '**/source/*.sln'
-  buildPlatform: 'Any CPU'
-  buildConfiguration: 'Release'
-  nugetPackageName: 'nanoFramework.System.Text'
-  repoName: 'lib-nanoFramework.System.Text'
+##############################
+- job: Build_lib
+  condition: eq(variables['UPDATE_DEPENDENTS'], 'false')
+  pool:
+    vmImage: 'VS2017-Win2016'
 
-steps:
+  variables:
+    solution: '**/source/*.sln'
+    buildPlatform: 'Any CPU'
+    buildConfiguration: 'Release'
+    nugetPackageName: 'nanoFramework.System.Text'
+    repoName: 'lib-nanoFramework.System.Text'
 
-# step from template @ nf-tools repo
-# all build, update and publish steps
-- template: azure-pipelines-templates/class-lib-build.yml@templates
-  parameters:
-    sonarCloudProject: 'nanoframework_lib-nanoFramework.System.Text'
+  steps:
 
-# update dependencies
-- task: UpdatenFDependencies@1
-  inputs:
-    gitHubToken: $(GitHubToken)
-    repositoriesToUpdate: |
-      lib-nanoFramework.System.Net
-      lib-nanoFramework.System.Net.Http
-      lib-Windows.Devices.SerialCommunication
-      lib-Windows.Storage
-      lib-Windows.Storage.Streams
-      Json.NetMF
-      paho.mqtt.m2mqtt
-  condition: or( and( succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v') ), and( succeeded(), contains(variables['Build.SourceVersionMessage'], '***UPDATE_DEPENDENTS***') ), eq(variables['UPDATE_DEPENDENTS'], 'true') )
-  displayName: Update dependent class libs
+  # step from template @ nf-tools repo
+  # all build, update and publish steps
+  - template: azure-pipelines-templates/class-lib-build.yml@templates
+    parameters:
+      sonarCloudProject: 'nanoframework_lib-nanoFramework.System.Text'
 
-# step from template @ nf-tools repo
-# report error
-- template: azure-pipelines-templates/discord-webhook-task.yml@templates  
-  parameters:
-    status: 'failure'
-    webhookUrl: '$(DiscordWebhook)'
-    message: ''
+##############################
+- job: Update_Dependencies
+  condition: and( ne( variables['StartReleaseCandidate'], true ), or( contains(variables['Build.SourceVersionMessage'], '***UPDATE_DEPENDENTS***'), eq(variables['UPDATE_DEPENDENTS'], 'true') ) )
+
+  dependsOn:
+  - Build_mscorlib
+
+  pool:
+    vmImage: 'VS2017-Win2016'
+
+  steps:
+  # need this here in order to persist GitHub credentials 
+  - checkout: self
+    fetchDepth: 1
+
+  - task: NuGetToolInstaller@0
+    inputs:
+      versionSpec: '5.4.0'
+    condition: ne( variables['StartReleaseCandidate'], true )
+    displayName: 'Install specific version of NuGet'
+
+  # update dependencies
+  - task: UpdatenFDependencies@1
+    inputs:
+      gitHubToken: $(GitHubToken)
+      repositoriesToUpdate: |
+        lib-nanoFramework.System.Net
+        lib-nanoFramework.System.Net.Http
+        lib-Windows.Devices.SerialCommunication
+        lib-Windows.Storage
+        lib-Windows.Storage.Streams
+        Json.NetMF
+        paho.mqtt.m2mqtt
+    condition: or( and( succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v') ), and( succeeded(), contains(variables['Build.SourceVersionMessage'], '***UPDATE_DEPENDENTS***') ), eq(variables['UPDATE_DEPENDENTS'], 'true') )
+    displayName: Update dependent class libs
+
+##################################
+# report build failure to Discord
+- job: Report_Build_Failure
+  
+  dependsOn:
+  - Build_lib
+  - Update_Dependencies
+  condition: or( failed('Build_lib'), failed('Update_Dependencies'))
+
+  pool:
+    vmImage: 'VS2017-Win2016'
+
+  steps:
+  
+  - checkout: self
+
+  # step from template @ nf-tools repo
+  # report error
+  - template: azure-pipelines-templates/discord-webhook-task.yml@templates  
+    parameters:
+      status: 'failure'
+      webhookUrl: '$(DiscordWebhook)'
+      message: ''
