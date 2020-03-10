@@ -54,7 +54,7 @@ steps:
   inputs:
     gitHubToken: $(GitHubToken)
     repositoriesToUpdate: |
-      lib-System.Net
+      lib-nanoFramework.System.Net
       lib-nanoFramework.System.Net.Http
       lib-Windows.Devices.SerialCommunication
       lib-Windows.Storage
