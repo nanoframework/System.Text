@@ -59,7 +59,7 @@ jobs:
   condition: and( ne( variables['StartReleaseCandidate'], true ), or( contains(variables['Build.SourceVersionMessage'], '***UPDATE_DEPENDENTS***'), eq(variables['UPDATE_DEPENDENTS'], 'true') ) )
 
   dependsOn:
-  - Build_mscorlib
+  - Build_lib
 
   pool:
     vmImage: 'VS2017-Win2016'
