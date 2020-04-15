@@ -34,8 +34,8 @@ resources:
 jobs:
 
 ##############################
-- job: Build_lib
-  condition: eq(variables['UPDATE_DEPENDENTS'], 'false')
+- job: Build_Library
+  condition: or( eq(variables['UPDATE_DEPENDENTS'], 'false'), eq(variables['StartReleaseCandidate'], 'true') )
   pool:
     vmImage: 'VS2017-Win2016'
 
@@ -56,10 +56,10 @@ jobs:
 
 ##############################
 - job: Update_Dependencies
-  condition: and( ne( variables['StartReleaseCandidate'], true ), or( contains(variables['Build.SourceVersionMessage'], '***UPDATE_DEPENDENTS***'), eq(variables['UPDATE_DEPENDENTS'], 'true') ) )
+  condition: or( and( succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'), eq(variables['StartReleaseCandidate'], 'false') ), and( succeeded(), contains(variables['getCommitMessage.COMMIT_MESSAGE'], '***UPDATE_DEPENDENTS***'), eq(variables['StartReleaseCandidate'], 'false') ), eq(variables['UPDATE_DEPENDENTS'], 'true') )
 
   dependsOn:
-  - Build_lib
+  - Build_Library
 
   pool:
     vmImage: 'VS2017-Win2016'
@@ -87,7 +87,6 @@ jobs:
         lib-Windows.Storage.Streams
         Json.NetMF
         paho.mqtt.m2mqtt
-    condition: or( and( succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v') ), and( succeeded(), contains(variables['Build.SourceVersionMessage'], '***UPDATE_DEPENDENTS***') ), eq(variables['UPDATE_DEPENDENTS'], 'true') )
     displayName: Update dependent class libs
 
 ##################################
@@ -95,9 +94,9 @@ jobs:
 - job: Report_Build_Failure
   
   dependsOn:
-  - Build_lib
+  - Build_Library
   - Update_Dependencies
-  condition: or( failed('Build_lib'), failed('Update_Dependencies'))
+  condition: or( failed('Build_Library'), failed('Update_Dependencies'))
 
   pool:
     vmImage: 'VS2017-Win2016'
