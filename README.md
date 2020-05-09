@@ -11,7 +11,7 @@
 
 | Component | Build Status | NuGet Package |
 |:-|---|---|
-| nanoFramework.System.Text | [![Build Status](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_apis/build/status/nanoframework.lib-nanoFramework.System.Text?branchName=master)](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_build/latest?definitionId=57&branchName=master) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Text.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.nanoFramework.System.Text/)  |
+| nanoFramework.System.Text | [![Build Status](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_apis/build/status/nanoframework.lib-nanoFramework.System.Text?branchName=master)](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_build/latest?definitionId=57&branchName=master) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Text.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Text/)  |
 | nanoFramework.System.Text (preview) | [![Build Status](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_apis/build/status/nanoframework.lib-nanoFramework.System.Text?branchName=develop)](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_build/latest?definitionId=57&branchName=develop) | [![](https://badgen.net/badge/NuGet/preview/D7B023?icon=https://simpleicons.now.sh/azuredevops/fff)](https://dev.azure.com/nanoframework/feed/_packaging?_a=package&feed=sandbox&package=nanoFramework.nanoFramework.System.Text&protocolType=NuGet&view=overview) |
 
 ## Feedback and documentation
