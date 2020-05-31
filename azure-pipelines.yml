@@ -30,6 +30,16 @@ resources:
       type: github
       name: nanoframework/nf-tools
       endpoint: nanoframework
+      
+pool:
+  vmImage: 'VS2017-Win2016'
+
+variables:
+  solution: '**/source/*.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  nugetPackageName: 'nanoFramework.System.Text'
+  repoName: 'lib-nanaoFramwork.System.Text'
 
 steps:
 
