@@ -84,7 +84,7 @@ jobs:
         lib-Windows.Devices.SerialCommunication
         lib-Windows.Storage
         lib-Windows.Storage.Streams
-        nanoFramework.Json
+        lib-nanoFramework.Json
         paho.mqtt.m2mqtt
     displayName: Update dependent class libs
    
