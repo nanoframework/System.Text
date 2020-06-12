@@ -32,3 +32,4 @@ The **nanoFramework** Class Libraries are licensed under the [Apache 2.0 license
 
 This project has adopted the code of conduct defined by the [Contributor Covenant](http://contributor-covenant.org/)
 to clarify expected behavior in our community.
+ 
