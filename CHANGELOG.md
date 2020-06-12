@@ -1,8 +1,8 @@
 # Changelog
 
-## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-nanoFramework.System.Text/tree/HEAD)
+## [v1.0.0-preview.25](https://github.com/nanoframework/lib-nanoFramework.System.Text/tree/v1.0.0-preview.25) (2020-06-11)
 
-[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.System.Text/compare/v1.0.0-preview.22...HEAD)
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.System.Text/compare/v1.0.0-preview.22...v1.0.0-preview.25)
 
 **Documentation and other chores:**
 
