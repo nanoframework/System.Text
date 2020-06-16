@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.0.0](https://github.com/nanoframework/lib-nanoFramework.System.Text/tree/v1.0.0) (2020-06-12)
+
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.System.Text/compare/v1.0.0-preview.25...v1.0.0)
+
+**Documentation and other chores:**
+
+- Release release-v1.0.0 [\#11](https://github.com/nanoframework/lib-nanoFramework.System.Text/pull/11)
+
 ## [v1.0.0-preview.25](https://github.com/nanoframework/lib-nanoFramework.System.Text/tree/v1.0.0-preview.25) (2020-06-11)
 
 [Full Changelog](https://github.com/nanoframework/lib-nanoFramework.System.Text/compare/v1.0.0-preview.22...v1.0.0-preview.25)
