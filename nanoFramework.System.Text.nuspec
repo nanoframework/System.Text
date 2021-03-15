@@ -4,15 +4,16 @@
     <id>nanoFramework.System.Text</id>
     <version>$version$</version>
     <title>nanoFramework.System.Text</title>
-    <authors>nanoFramework project contributors</authors>
-    <owners>nanoFramework project contributors</owners>
+    <authors>.NET nanoFramework project contributors</authors>
+    <owners>.NET nanoFramework project contributors,dotnetfoundation</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <license type="expression">Apache-2.0</license>
+    <license type="file">LICENSE.md</license>
     <releaseNotes>
     </releaseNotes>
     <developmentDependency>false</developmentDependency>
     <projectUrl>https://github.com/nanoframework/lib-nanoFramework.System.Text</projectUrl>
     <iconUrl>https://secure.gravatar.com/avatar/97d0e092247f0716db6d4b47b7d1d1ad</iconUrl>
+    <icon>images\nf-logo.png</icon>
     <repository type="git" url="https://github.com/nanoframework/lib-nanoFramework.System.Text" commit="$commit$" />
     <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
     <description>This package includes the System.Text assembly for nanoFramework C# projects.
@@ -29,7 +30,9 @@ This package requires a target with nanoFramework.System.Text v$nativeVersion$.<
     <file src="nanoFramework.System.Text\bin\Release\nanoFramework.System.Text.pdbx" target="lib\nanoFramework.System.Text.pdbx" />
     <file src="nanoFramework.System.Text\bin\Release\nanoFramework.System.Text.pe" target="lib\nanoFramework.System.Text.pe" />
     <file src="nanoFramework.System.Text\bin\Release\nanoFramework.System.Text.xml" target="lib\nanoFramework.System.Text.xml" />
-    <!-- readme -->
-    <file src="readme.txt" target="readme.txt" />
+    
+    <file src="assets\readme.txt" target="" />
+    <file src="assets\nf-logo.png" target="images" />
+    <file src="LICENSE.md" target="" />
   </files>
 </package>
