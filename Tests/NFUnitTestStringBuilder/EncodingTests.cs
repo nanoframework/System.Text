@@ -17,10 +17,13 @@ namespace NFUnitTestStringBuilder
         public void Utf8EncodingTests_Test1()
         {
             string str = "this is a normal string that will be used to convert to bytes then back to a string";
+            
             byte[] data = new byte[128];
             int len = str.Length;
             int idx = 0;
-            Random rand = new System.Random();
+
+            Random rand = new Random();
+            
             int cBytes = 0;
 
             while (len > 0)
