@@ -2,7 +2,19 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/lib-nanoFramework.System.Text/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.System.Text/compare/v1.1.1-preview.24...HEAD)
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.System.Text/compare/v1.1.1-preview.29...HEAD)
+
+**Implemented enhancements:**
+
+- Adding Unit Test from .NET Microframework [\#25](https://github.com/nanoframework/lib-nanoFramework.System.Text/pull/25)
+
+**Documentation and other chores:**
+
+- Update 1 nuget dependencies [\#26](https://github.com/nanoframework/lib-nanoFramework.System.Text/pull/26)
+
+## [v1.1.1-preview.29](https://github.com/nanoframework/lib-nanoFramework.System.Text/tree/v1.1.1-preview.29) (2021-03-02)
+
+[Full Changelog](https://github.com/nanoframework/lib-nanoFramework.System.Text/compare/v1.1.1-preview.24...v1.1.1-preview.29)
 
 **Documentation and other chores:**
 
@@ -88,14 +100,11 @@
 **Documentation and other chores:**
 
 - Release release-v1.0.0 [\#11](https://github.com/nanoframework/lib-nanoFramework.System.Text/pull/11)
+- Bumps nanoFramework.CoreLibrary from 1.7.3-preview.4 to 1.7.3 [\#10](https://github.com/nanoframework/lib-nanoFramework.System.Text/pull/10)
 
 ## [v1.0.0-preview.25](https://github.com/nanoframework/lib-nanoFramework.System.Text/tree/v1.0.0-preview.25) (2020-06-11)
 
 [Full Changelog](https://github.com/nanoframework/lib-nanoFramework.System.Text/compare/v1.0.0-preview.22...v1.0.0-preview.25)
-
-**Documentation and other chores:**
-
-- Bumps nanoFramework.CoreLibrary from 1.7.3-preview.4 to 1.7.3 [\#10](https://github.com/nanoframework/lib-nanoFramework.System.Text/pull/10)
 
 ## [v1.0.0-preview.22](https://github.com/nanoframework/lib-nanoFramework.System.Text/tree/v1.0.0-preview.22) (2020-05-31)
 
