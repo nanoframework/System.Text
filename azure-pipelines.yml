@@ -30,7 +30,7 @@ jobs:
     buildPlatform: 'Any CPU'
     buildConfiguration: 'Release'
     nugetPackageName: 'nanoFramework.System.Text'
-    repoName: 'lib-nanoFramework.System.Text'
+    repoName: 'nanoFramework.System.Text'
 
   steps:
 
