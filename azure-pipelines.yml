@@ -50,7 +50,7 @@ jobs:
   - Build_Library
 
   pool:
-    vmImage: 'VS2017-Win2016'
+    vmImage: 'windows-2019'
 
   variables:
     DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
@@ -69,12 +69,12 @@ jobs:
     inputs:
       gitHubToken: $(GitHubToken)
       repositoriesToUpdate: |
-        lib-nanoFramework.System.Net
-        lib-nanoFramework.System.Net.Http
-        lib-Windows.Devices.SerialCommunication
-        lib-Windows.Storage
-        lib-Windows.Storage.Streams
-        lib-nanoFramework.Json
+        nanoFramework.System.Net
+        nanoFramework.System.Net.Http
+        Windows.Devices.SerialCommunication
+        Windows.Storage
+        Windows.Storage.Streams
+        nanoFramework.Json
         paho.mqtt.m2mqtt
     displayName: Update dependent class libs
    
@@ -88,7 +88,7 @@ jobs:
   condition: or( failed('Build_Library'), failed('Update_Dependencies'))
 
   pool:
-    vmImage: 'VS2017-Win2016'
+    vmImage: 'windows-2019'
   steps:
 
   - checkout: self
