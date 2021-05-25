@@ -1,8 +1,8 @@
 trigger:
   branches:
-    include: [main, master, develop, "release-*" ]
+    include: [main, develop, "release-*" ]
   paths:
-    exclude: ["*.md", .gitignore]
+    exclude: [README.md, LICENSE.md, NuGet.Config, .github_changelog_generator, .gitignore]
   tags:
     include: ["v*"]
 
@@ -69,8 +69,8 @@ jobs:
     inputs:
       gitHubToken: $(GitHubToken)
       repositoriesToUpdate: |
-        nanoFramework.System.Net
-        nanoFramework.System.Net.Http
+        System.Net
+        System.Net.Http
         Windows.Devices.SerialCommunication
         Windows.Storage
         Windows.Storage.Streams
