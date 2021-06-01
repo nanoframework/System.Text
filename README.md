@@ -11,8 +11,8 @@
 
 | Component | Build Status | NuGet Package |
 |:-|---|---|
-| nanoFramework.System.Text | [![Build Status](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_apis/build/status/nanoframework.lib-nanoFramework.System.Text?branchName=main)](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_build/latest?definitionId=57&branchName=main) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Text.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Text/)  |
-| nanoFramework.System.Text (preview) | [![Build Status](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_apis/build/status/nanoframework.lib-nanoFramework.System.Text?branchName=develop)](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_build/latest?definitionId=57&branchName=develop) |  [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Text.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Text/) |
+| nanoFramework.System.Text | [![Build Status](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_apis/build/status/System.Text?repoName=nanoframework%2FSystem.Text&branchName=main)](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_build/latest?definitionId=57&repoName=nanoframework%2FSystem.Text&branchName=main) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Text.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Text/)  |
+| nanoFramework.System.Text (preview) | [![Build Status](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_apis/build/status/System.Text?repoName=nanoframework%2FSystem.Text&branchName=develop)](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_build/latest?definitionId=57&repoName=nanoframework%2FSystem.Text&branchName=develop) |  [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Text.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Text/) |
 
 ## Feedback and documentation
 
