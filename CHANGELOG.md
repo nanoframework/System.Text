@@ -2,7 +2,16 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Text/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.1-preview.59...HEAD)
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.1-preview.61...HEAD)
+
+**Documentation and other chores:**
+
+- Bumps nanoFramework.CoreLibrary from 1.10.5-preview.13 to 1.10.5-preview.18 [\#55](https://github.com/nanoframework/System.Text/pull/55)
+- Update 1 nuget dependencies [\#54](https://github.com/nanoframework/System.Text/pull/54)
+
+## [v1.1.1-preview.61](https://github.com/nanoframework/System.Text/tree/v1.1.1-preview.61) (2021-06-07)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.1-preview.59...v1.1.1-preview.61)
 
 **Documentation and other chores:**
 
