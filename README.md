@@ -1,7 +1,7 @@
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=nanoframework_lib-nanoFramework.System.Text&metric=alert_status)](https://sonarcloud.io/dashboard?id=nanoframework_lib-nanoFramework.System.Text) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=nanoframework_lib-nanoFramework.System.Text&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=nanoframework_lib-nanoFramework.System.Text) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://github.com/nanoframework/Home/blob/master/LICENSE) [![NuGet](https://img.shields.io/nuget/dt/nanoFramework.nanoFramework.System.Text.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Text/) [![#yourfirstpr](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](https://github.com/nanoframework/Home/blob/master/CONTRIBUTING.md)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=nanoframework_lib-nanoFramework.System.Text&metric=alert_status)](https://sonarcloud.io/dashboard?id=nanoframework_lib-nanoFramework.System.Text) [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=nanoframework_lib-nanoFramework.System.Text&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=nanoframework_lib-nanoFramework.System.Text) [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE) [![NuGet](https://img.shields.io/nuget/dt/nanoFramework.System.Text.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Text/) [![#yourfirstpr](https://img.shields.io/badge/first--timers--only-friendly-blue.svg)](https://github.com/nanoframework/Home/blob/main/CONTRIBUTING.md)
 [![Discord](https://img.shields.io/discord/478725473862549535.svg?logo=discord&logoColor=white&label=Discord&color=7289DA)](https://discord.gg/gCyBu8T)
 
-![nanoFramework logo](https://github.com/nanoframework/Home/blob/master/resources/logo/nanoFramework-repo-logo.png)
+![nanoFramework logo](https://github.com/nanoframework/Home/blob/main/resources/logo/nanoFramework-repo-logo.png)
 
 -----
 
@@ -11,8 +11,8 @@
 
 | Component | Build Status | NuGet Package |
 |:-|---|---|
-| nanoFramework.System.Text | [![Build Status](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_apis/build/status/nanoframework.lib-nanoFramework.System.Text?branchName=master)](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_build/latest?definitionId=57&branchName=master) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Text.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Text/)  |
-| nanoFramework.System.Text (preview) | [![Build Status](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_apis/build/status/nanoframework.lib-nanoFramework.System.Text?branchName=develop)](https://dev.azure.com/nanoframework/nanoFramework.System.Text/_build/latest?definitionId=57&branchName=develop) | [![](https://badgen.net/badge/NuGet/preview/D7B023?icon=https://simpleicons.now.sh/azuredevops/fff)](https://dev.azure.com/nanoframework/feed/_packaging?_a=package&feed=sandbox&package=nanoFramework.nanoFramework.System.Text&protocolType=NuGet&view=overview) |
+| nanoFramework.System.Text | [![Build Status](https://dev.azure.com/nanoframework/System.Text/_apis/build/status/System.Text?repoName=nanoframework%2FSystem.Text&branchName=main)](https://dev.azure.com/nanoframework/System.Text/_build/latest?definitionId=57&repoName=nanoframework%2FSystem.Text&branchName=main) | [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Text.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Text/)  |
+| nanoFramework.System.Text (preview) | [![Build Status](https://dev.azure.com/nanoframework/System.Text/_apis/build/status/System.Text?repoName=nanoframework%2FSystem.Text&branchName=develop)](https://dev.azure.com/nanoframework/System.Text/_build/latest?definitionId=57&repoName=nanoframework%2FSystem.Text&branchName=develop) |  [![NuGet](https://img.shields.io/nuget/v/nanoFramework.System.Text.svg?label=NuGet&style=flat&logo=nuget)](https://www.nuget.org/packages/nanoFramework.System.Text/) |
 
 ## Feedback and documentation
 
@@ -22,14 +22,17 @@ Join our Discord community [here](https://discord.gg/gCyBu8T).
 
 ## Credits
 
-The list of contributors to this project can be found at [CONTRIBUTORS](https://github.com/nanoframework/Home/blob/master/CONTRIBUTORS.md).
+The list of contributors to this project can be found at [CONTRIBUTORS](https://github.com/nanoframework/Home/blob/main/CONTRIBUTORS.md).
 
 ## License
 
-The **nanoFramework** Class Libraries are licensed under the [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0).
+The **nanoFramework** Class Libraries are licensed under the [MIT license](LICENSE.md).
 
 ## Code of Conduct
 
-This project has adopted the code of conduct defined by the [Contributor Covenant](http://contributor-covenant.org/)
-to clarify expected behavior in our community.
- 
+This project has adopted the code of conduct defined by the Contributor Covenant to clarify expected behavior in our community.
+For more information see the [.NET Foundation Code of Conduct](https://dotnetfoundation.org/code-of-conduct).
+
+### .NET Foundation
+
+This project is supported by the [.NET Foundation](https://dotnetfoundation.org).
