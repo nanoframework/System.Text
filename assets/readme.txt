@@ -6,7 +6,7 @@
                                                                                
 ===================================================================================
 
-API docs: https://docs.nanoframework.net/api/nanoFramework.System.Text.html
+API docs: https://docs.nanoframework.net/api/System.Text
 
 Browse our samples repository: https://github.com/nanoframework/samples
 
