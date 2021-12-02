@@ -1,6 +1,16 @@
 # Changelog
 
-[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2-preview.12...HEAD)
+## [v1.1.2](https://github.com/nanoframework/System.Text/tree/v1.1.2) (2021-12-02)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2-preview.14...v1.1.2)
+
+**Documentation and other chores:**
+
+- Update 1 nuget dependencies [\#74](https://github.com/nanoframework/System.Text/pull/74)
+
+## [v1.1.2-preview.14](https://github.com/nanoframework/System.Text/tree/v1.1.2-preview.14) (2021-12-02)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2-preview.12...v1.1.2-preview.14)
 
 **Documentation and other chores:**
 
