@@ -1,7 +1,5 @@
 # Changelog
 
-## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Text/tree/HEAD)
-
 [Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2-preview.12...HEAD)
 
 **Documentation and other chores:**
