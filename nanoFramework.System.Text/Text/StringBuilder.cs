@@ -71,7 +71,7 @@ namespace System.Text
             set
             {
                 var chunkPrevious = this;
-Label_0002:
+            Label_0002:
                 var num = index - chunkPrevious._chunkOffset;
                 if (num >= 0)
                 {
@@ -620,7 +620,7 @@ Label_0002:
 
             var chunkPrevious = this;
             var num2 = startIndex + length;
-            var result = new char[Length];
+            var result = new char[length];
             var num3 = length;
             while (num3 > 0)
             {
@@ -649,7 +649,7 @@ Label_0002:
                             throw new ArgumentOutOfRangeException("chunkCount");
 #pragma warning restore S3928 // Parameter names used into ArgumentException constructors should match an existing one 
                         }
-                        Array.Copy(chunkChars, index, result, 0, charCount);
+                        Array.Copy(chunkChars, index, result, num3, charCount);
                     }
                 }
                 chunkPrevious = chunkPrevious._chunkPrevious;
@@ -734,7 +734,7 @@ Label_0002:
 
             var num2 = startIndex + count;
             var chunkPrevious = this;
-Label_0048:
+        Label_0048:
             var num3 = num2 - chunkPrevious._chunkOffset;
             var num4 = startIndex - chunkPrevious._chunkOffset;
             if (num3 >= 0)
@@ -924,8 +924,8 @@ Label_0048:
                 var index = 0;
                 var replacementIndex = 0;
                 var chars = value.ToCharArray();
-ReplaceValue:
-//Replace the value                 
+            ReplaceValue:
+                //Replace the value                 
                 ReplaceInPlaceAtChunk(ref chunk, ref indexInChunk, chars, ref replacementIndex, value.Length);
                 if (replacementIndex == value.Length) replacementIndex = 0;
 
