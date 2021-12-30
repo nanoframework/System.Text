@@ -246,7 +246,8 @@ namespace NFUnitTestStringBuilder
         [TestMethod]
         public void Test_5_ToStringLengthTest_0()
         {
-            stringBuilder = new StringBuilder();
+            stringBuilder.Clear();
+            stringBuilder.Capacity = 16;
             stringBuilder.Append("Hello from nanoFramework!");
             var outStr = stringBuilder.ToString(0, 5);
             Assert.Equal("Hello", outStr);
@@ -255,7 +256,8 @@ namespace NFUnitTestStringBuilder
         [TestMethod]
         public void Test_5_ToStringLengthTest_1()
         {
-            stringBuilder = new StringBuilder();
+            stringBuilder.Clear();
+            stringBuilder.Capacity = 16;
             stringBuilder.Append("Hello from nanoFramework!");
             var outStr = stringBuilder.ToString(0, 25);
             Assert.Equal("Hello from nanoFramework!", outStr);
@@ -264,7 +266,8 @@ namespace NFUnitTestStringBuilder
         [TestMethod]
         public void Test_5_ToStringStartIndexLengthTest_0()
         {
-            stringBuilder = new StringBuilder();
+            stringBuilder.Clear();
+            stringBuilder.Capacity = 16;
             stringBuilder.Append("Hello from nanoFramework!");
             var outStr = stringBuilder.ToString(11, 13);
             Assert.Equal("nanoFramework", outStr);
