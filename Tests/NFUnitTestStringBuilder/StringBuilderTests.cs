@@ -243,6 +243,32 @@ namespace NFUnitTestStringBuilder
             Assert.True(stringBuilder.Capacity > 5);
         }
 
+        [TestMethod]
+        public void Test_5_ToStringLengthTest_0()
+        {
+            stringBuilder = new StringBuilder();
+            stringBuilder.Append("Hello from nanoFramework!");
+            var outStr = stringBuilder.ToString(0, 5);
+            Assert.Equal("Hello", outStr);
+        }
+
+        [TestMethod]
+        public void Test_5_ToStringLengthTest_1()
+        {
+            stringBuilder = new StringBuilder();
+            stringBuilder.Append("Hello from nanoFramework!");
+            var outStr = stringBuilder.ToString(0, 25);
+            Assert.Equal("Hello from nanoFramework!", outStr);
+        }
+
+        [TestMethod]
+        public void Test_5_ToStringStartIndexLengthTest_0()
+        {
+            stringBuilder = new StringBuilder();
+            stringBuilder.Append("Hello from nanoFramework!");
+            var outStr = stringBuilder.ToString(11, 13);
+            Assert.Equal("nanoFramework", outStr);
+        }
     }
 
     static class RandomExtension
