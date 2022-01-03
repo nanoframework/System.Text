@@ -71,7 +71,7 @@ namespace System.Text
             set
             {
                 var chunkPrevious = this;
-Label_0002:
+            Label_0002:
                 var num = index - chunkPrevious._chunkOffset;
                 if (num >= 0)
                 {
@@ -612,47 +612,47 @@ Label_0002:
         /// <returns>A string whose value is the same as the specified substring of this instance.</returns>
         public string ToString(int startIndex, int length)
         {
-            var num = Length;
+            var currentLength = Length;
             if (startIndex < 0) throw new ArgumentOutOfRangeException("startIndex");
-            if (startIndex > num) throw new ArgumentOutOfRangeException("startIndex");
+            if (startIndex > currentLength) throw new ArgumentOutOfRangeException("startIndex");
             if (length < 0) throw new ArgumentOutOfRangeException("length");
-            if (startIndex > num - length) throw new ArgumentOutOfRangeException("length");
+            if (startIndex > currentLength - length) throw new ArgumentOutOfRangeException("length");
 
-            var chunkPrevious = this;
-            var num2 = startIndex + length;
-            var result = new char[Length];
-            var num3 = length;
-            while (num3 > 0)
+            var chunk = this;
+            var sourceEndIndex = startIndex + length;
+            var result = new char[length];
+            var destinationIndex = length;
+            while (destinationIndex > 0)
             {
-                var chunkLength = num2 - chunkPrevious._chunkOffset;
+                var chunkLength = sourceEndIndex - chunk._chunkOffset;
                 if (chunkLength >= 0)
                 {
-                    if (chunkLength > chunkPrevious._chunkLength)
+                    if (chunkLength > chunk._chunkLength)
                     {
-                        chunkLength = chunkPrevious._chunkLength;
+                        chunkLength = chunk._chunkLength;
                     }
-                    var num5 = num3;
-                    var charCount = num5;
-                    var index = chunkLength - num5;
+                    var leftChars = destinationIndex;
+                    var charCount = leftChars;
+                    var index = chunkLength - leftChars;
                     if (index < 0)
                     {
                         charCount += index;
                         index = 0;
                     }
-                    num3 -= charCount;
+                    destinationIndex -= charCount;
                     if (charCount > 0)
                     {
-                        var chunkChars = chunkPrevious._chunkChars;
-                        if (charCount + num3 > length || charCount + index > chunkChars.Length)
+                        var chunkChars = chunk._chunkChars;
+                        if (charCount + destinationIndex > length || charCount + index > chunkChars.Length)
                         {
 #pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
                             throw new ArgumentOutOfRangeException("chunkCount");
 #pragma warning restore S3928 // Parameter names used into ArgumentException constructors should match an existing one 
                         }
-                        Array.Copy(chunkChars, index, result, 0, charCount);
+                        Array.Copy(chunkChars, index, result, destinationIndex, charCount);
                     }
                 }
-                chunkPrevious = chunkPrevious._chunkPrevious;
+                chunk = chunk._chunkPrevious;
             }
             return new string(result);
         }
@@ -734,7 +734,7 @@ Label_0002:
 
             var num2 = startIndex + count;
             var chunkPrevious = this;
-Label_0048:
+        Label_0048:
             var num3 = num2 - chunkPrevious._chunkOffset;
             var num4 = startIndex - chunkPrevious._chunkOffset;
             if (num3 >= 0)
@@ -924,8 +924,8 @@ Label_0048:
                 var index = 0;
                 var replacementIndex = 0;
                 var chars = value.ToCharArray();
-ReplaceValue:
-//Replace the value                 
+            ReplaceValue:
+                //Replace the value                 
                 ReplaceInPlaceAtChunk(ref chunk, ref indexInChunk, chars, ref replacementIndex, value.Length);
                 if (replacementIndex == value.Length) replacementIndex = 0;
 
