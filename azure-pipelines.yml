@@ -60,12 +60,9 @@ jobs:
 
   - checkout: none
 
-  - template: azure-pipelines-templates/install-nuget.yml@templates 
-
-  # update dependencies
-  - task: UpdatenFDependencies@1
-    inputs:
-      gitHubToken: $(GitHubToken)
+  # update dependents
+  - template: azure-pipelines-templates/update-dependents.yml@templates  
+    parameters:
       repositoriesToUpdate: |
         System.Net
         System.Net.Http
@@ -74,7 +71,6 @@ jobs:
         Windows.Storage.Streams
         nanoFramework.Json
         paho.mqtt.m2mqtt
-    displayName: Update dependent class libs
    
 ##################################
 # report build failure to Discord
