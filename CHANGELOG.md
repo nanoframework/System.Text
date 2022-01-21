@@ -2,7 +2,31 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Text/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2-preview.12...HEAD)
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.4...HEAD)
+
+**Documentation and other chores:**
+
+- Update 2 NuGet dependencies [\#79](https://github.com/nanoframework/System.Text/pull/79)
+
+## [v1.1.3-preview.4](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.4) (2022-01-03)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2...v1.1.3-preview.4)
+
+**Fixed bugs:**
+
+- Fix ToString\(int,int\) method in StringBuilder [\#75](https://github.com/nanoframework/System.Text/pull/75)
+
+**Documentation and other chores:**
+
+- Update 1 nuget dependencies [\#74](https://github.com/nanoframework/System.Text/pull/74)
+
+## [v1.1.2](https://github.com/nanoframework/System.Text/tree/v1.1.2) (2021-12-02)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2-preview.14...v1.1.2)
+
+## [v1.1.2-preview.14](https://github.com/nanoframework/System.Text/tree/v1.1.2-preview.14) (2021-12-02)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2-preview.12...v1.1.2-preview.14)
 
 **Documentation and other chores:**
 
