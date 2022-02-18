@@ -64,13 +64,13 @@ jobs:
   - template: azure-pipelines-templates/update-dependents.yml@templates  
     parameters:
       repositoriesToUpdate: |
+        nanoFramework.Json
+        nanoFramework.m2mqtt
         System.Net
         System.Net.Http
         Windows.Devices.SerialCommunication
         Windows.Storage
         Windows.Storage.Streams
-        nanoFramework.Json
-        paho.mqtt.m2mqtt
    
 ##################################
 # report build failure to Discord
