@@ -1,8 +1,8 @@
 # Changelog
 
-## [v1.1.2](https://github.com/nanoframework/System.Text/tree/v1.1.2) (2021-12-02)
+## [v1.1.3-preview.27](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.27) (2022-03-28)
 
-[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.24...HEAD)
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.24...v1.1.3-preview.27)
 
 **Documentation and other chores:**
 
