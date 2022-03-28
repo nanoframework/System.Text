@@ -2,11 +2,93 @@
 
 ## [v1.1.2](https://github.com/nanoframework/System.Text/tree/v1.1.2) (2021-12-02)
 
-[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2-preview.14...v1.1.2)
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.24...HEAD)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#89](https://github.com/nanoframework/System.Text/pull/89)
+- Update 1 NuGet dependencies [\#88](https://github.com/nanoframework/System.Text/pull/88)
+
+## [v1.1.3-preview.24](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.24) (2022-03-17)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.22...v1.1.3-preview.24)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#87](https://github.com/nanoframework/System.Text/pull/87)
+
+## [v1.1.3-preview.22](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.22) (2022-03-14)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.19...v1.1.3-preview.22)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#86](https://github.com/nanoframework/System.Text/pull/86)
+
+## [v1.1.3-preview.19](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.19) (2022-03-14)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.15...v1.1.3-preview.19)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#85](https://github.com/nanoframework/System.Text/pull/85)
+- Update 1 NuGet dependencies [\#84](https://github.com/nanoframework/System.Text/pull/84)
+
+## [v1.1.3-preview.15](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.15) (2022-02-17)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.13...v1.1.3-preview.15)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#83](https://github.com/nanoframework/System.Text/pull/83)
+
+## [v1.1.3-preview.13](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.13) (2022-02-04)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.11...v1.1.3-preview.13)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#82](https://github.com/nanoframework/System.Text/pull/82)
+
+## [v1.1.3-preview.11](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.11) (2022-01-28)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.9...v1.1.3-preview.11)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#81](https://github.com/nanoframework/System.Text/pull/81)
+
+## [v1.1.3-preview.9](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.9) (2022-01-28)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.7...v1.1.3-preview.9)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#80](https://github.com/nanoframework/System.Text/pull/80)
+
+## [v1.1.3-preview.7](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.7) (2022-01-21)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.4...v1.1.3-preview.7)
+
+**Documentation and other chores:**
+
+- Update 2 NuGet dependencies [\#79](https://github.com/nanoframework/System.Text/pull/79)
+
+## [v1.1.3-preview.4](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.4) (2022-01-03)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2...v1.1.3-preview.4)
+
+**Fixed bugs:**
+
+- Fix ToString\(int,int\) method in StringBuilder [\#75](https://github.com/nanoframework/System.Text/pull/75)
 
 **Documentation and other chores:**
 
 - Update 1 nuget dependencies [\#74](https://github.com/nanoframework/System.Text/pull/74)
+
+## [v1.1.2](https://github.com/nanoframework/System.Text/tree/v1.1.2) (2021-12-02)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2-preview.14...v1.1.2)
 
 ## [v1.1.2-preview.14](https://github.com/nanoframework/System.Text/tree/v1.1.2-preview.14) (2021-12-02)
 
