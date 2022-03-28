@@ -2,7 +2,16 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Text/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.22...HEAD)
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.24...HEAD)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#89](https://github.com/nanoframework/System.Text/pull/89)
+- Update 1 NuGet dependencies [\#88](https://github.com/nanoframework/System.Text/pull/88)
+
+## [v1.1.3-preview.24](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.24) (2022-03-17)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.22...v1.1.3-preview.24)
 
 **Documentation and other chores:**
 
