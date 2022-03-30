@@ -86,7 +86,6 @@ jobs:
         nanoFramework.m2mqtt
         System.Net
         System.Net.Http
-        Windows.Devices.SerialCommunication
         Windows.Storage
         Windows.Storage.Streams
         System.IO.Streams

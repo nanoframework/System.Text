@@ -4,8 +4,7 @@
     <id>nanoFramework.System.Text</id>
     <version>$version$</version>
     <title>nanoFramework.System.Text</title>
-    <authors>.NET nanoFramework project contributors</authors>
-    <owners>nanoframework,dotnetfoundation</owners>
+    <authors>nanoFramework</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="file">LICENSE.md</license>
     <releaseNotes>
