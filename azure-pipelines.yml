@@ -20,10 +20,6 @@ trigger:
       - config/*
       - .github/*
 
-  tags:
-    include: 
-      - v*
-
 # PR always trigger build
 pr:
   autoCancel: true
@@ -40,7 +36,11 @@ jobs:
 
 ##############################
 - job: Build_Library
-  condition: or( eq(variables['UPDATE_DEPENDENTS'], 'false'), eq(variables['StartReleaseCandidate'], 'true') )
+  condition: >-
+    or(
+      eq(variables['UPDATE_DEPENDENTS'], 'false'),
+      eq(variables['StartReleaseCandidate'], 'true')
+    )
   pool:
     vmImage: 'windows-latest'
 
@@ -63,7 +63,20 @@ jobs:
 
 ##############################
 - job: Update_Dependencies
-  condition: or( and( succeeded(), startsWith(variables['Build.SourceBranch'], 'refs/tags/v'), eq(variables['StartReleaseCandidate'], 'false') ), and( succeeded(), contains(variables['getCommitMessage.COMMIT_MESSAGE'], '***UPDATE_DEPENDENTS***'), eq(variables['StartReleaseCandidate'], 'false') ), eq(variables['UPDATE_DEPENDENTS'], 'true') )
+  condition: >-
+    or(
+      and(
+        succeeded(),
+        startsWith(variables['Build.SourceBranch'], 'refs/heads/main'),
+        eq(variables['StartReleaseCandidate'], 'false')
+      ),
+      and(
+        succeeded(),
+        contains(variables['getCommitMessage.COMMIT_MESSAGE'], '***UPDATE_DEPENDENTS***'),
+        eq(variables['StartReleaseCandidate'], 'false')
+      ),
+      eq(variables['UPDATE_DEPENDENTS'], 'true')
+    )
 
   dependsOn:
   - Build_Library
@@ -93,7 +106,11 @@ jobs:
 ##################################
 # report build failure to Discord
 - job: Report_Build_Failure
-  condition: or( failed('Build_Library'), failed('Update_Dependencies'))
+  condition: >-
+    or(
+      failed('Build_Library'),
+      failed('Update_Dependencies')
+    )
 
   dependsOn:
   - Build_Library
