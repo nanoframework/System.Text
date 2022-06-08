@@ -272,6 +272,53 @@ namespace NFUnitTestStringBuilder
             var outStr = stringBuilder.ToString(11, 13);
             Assert.Equal("nanoFramework", outStr);
         }
+
+        [TestMethod]
+        public void Test_FixedSize()
+        {
+            // Arrange
+            string testStr = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string testSize = "testStr SB Variable Size: ";
+            var sbvariable = new StringBuilder();
+            var sbfixed = new StringBuilder(256);
+
+            // Act
+            sbvariable.Append(testSize);
+            sbvariable.Append(testStr);
+            
+            sbfixed.Append(testSize);
+            sbfixed.Append(testStr);
+
+            // Assert
+            Assert.Equal($"{testSize}{testStr}", sbvariable.ToString());
+            Assert.Equal($"{testSize}{testStr}", sbfixed.ToString());            
+        }
+
+        [TestMethod]
+        public void Test_FixedSizeInCreasing()
+        {
+            // Arrange
+            string testStr = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string testStrCompiled = string.Empty;
+            var sbfixed = new StringBuilder(256);
+            
+            // Act
+            sbfixed.Append(testStr);
+            testStrCompiled += testStr;
+
+            // Assert
+            Assert.Equal(testStrCompiled, sbfixed.ToString());
+
+            // Act
+            for(int i=0; i<20; i++)
+            {
+                sbfixed.Append(testStr);
+                testStrCompiled += testStr;
+            }
+
+            // Assert
+            Assert.Equal(testStrCompiled, sbfixed.ToString());
+        }
     }
 
     static class RandomExtension
