@@ -1,5 +1,27 @@
 # Changelog
 
+## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Text/tree/HEAD)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3...HEAD)
+
+**Documentation and other chores:**
+
+- Adding fixed size unit tests [\#98](https://github.com/nanoframework/System.Text/pull/98)
+- Update 1 NuGet dependencies [\#97](https://github.com/nanoframework/System.Text/pull/97)
+- Update 1 NuGet dependencies [\#96](https://github.com/nanoframework/System.Text/pull/96)
+- Update 1 NuGet dependencies [\#95](https://github.com/nanoframework/System.Text/pull/95)
+- Update 1 NuGet dependencies [\#94](https://github.com/nanoframework/System.Text/pull/94)
+- Update 1 NuGet dependencies [\#93](https://github.com/nanoframework/System.Text/pull/93)
+- Update 1 NuGet dependencies [\#92](https://github.com/nanoframework/System.Text/pull/92)
+
+## [v1.1.3](https://github.com/nanoframework/System.Text/tree/v1.1.3) (2022-03-28)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.27...v1.1.3)
+
+**Documentation and other chores:**
+
+- release-v1.1.3 [\#90](https://github.com/nanoframework/System.Text/pull/90)
+
 ## [v1.1.3-preview.27](https://github.com/nanoframework/System.Text/tree/v1.1.3-preview.27) (2022-03-28)
 
 [Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3-preview.24...v1.1.3-preview.27)
@@ -90,6 +112,10 @@
 
 [Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2-preview.14...v1.1.2)
 
+**Documentation and other chores:**
+
+- release-v1.1.2 [\#73](https://github.com/nanoframework/System.Text/pull/73)
+
 ## [v1.1.2-preview.14](https://github.com/nanoframework/System.Text/tree/v1.1.2-preview.14) (2021-12-02)
 
 [Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.2-preview.12...v1.1.2-preview.14)
@@ -117,11 +143,15 @@
 - Update 1 nuget dependencies [\#68](https://github.com/nanoframework/System.Text/pull/68)
 - Update 1 nuget dependencies [\#65](https://github.com/nanoframework/System.Text/pull/65)
 - Update 1 nuget dependencies [\#64](https://github.com/nanoframework/System.Text/pull/64)
-- Update 1 nuget dependencies [\#62](https://github.com/nanoframework/System.Text/pull/62)
 
 ## [v1.1.1](https://github.com/nanoframework/System.Text/tree/v1.1.1) (2021-07-15)
 
 [Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.1-preview.70...v1.1.1)
+
+**Documentation and other chores:**
+
+- release-v1.1.1 [\#63](https://github.com/nanoframework/System.Text/pull/63)
+- Update 1 nuget dependencies [\#62](https://github.com/nanoframework/System.Text/pull/62)
 
 ## [v1.1.1-preview.70](https://github.com/nanoframework/System.Text/tree/v1.1.1-preview.70) (2021-07-14)
 
@@ -334,9 +364,17 @@
 
 [Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.0.0...v1.1.0)
 
+**Documentation and other chores:**
+
+- Release release-v1.1.0 [\#12](https://github.com/nanoframework/System.Text/pull/12)
+
 ## [v1.0.0](https://github.com/nanoframework/System.Text/tree/v1.0.0) (2020-06-12)
 
 [Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.0.0-preview.25...v1.0.0)
+
+**Documentation and other chores:**
+
+- Release release-v1.0.0 [\#11](https://github.com/nanoframework/System.Text/pull/11)
 
 ## [v1.0.0-preview.25](https://github.com/nanoframework/System.Text/tree/v1.0.0-preview.25) (2020-06-11)
 
