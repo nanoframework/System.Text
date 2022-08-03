@@ -1,8 +1,8 @@
 # Changelog
 
-## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Text/tree/HEAD)
+## [v1.1.3.13](https://github.com/nanoframework/System.Text/tree/v1.1.3.13) (2022-06-08)
 
-[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3...HEAD)
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.1.3...v1.1.3.13)
 
 **Documentation and other chores:**
 
