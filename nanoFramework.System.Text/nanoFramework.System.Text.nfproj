@@ -35,7 +35,7 @@
     <NF_GenerateStubsDirectory>bin\$(Configuration)\Stubs</NF_GenerateStubsDirectory>
     <NF_GenerateSkeletonProjectName>nf_system_text</NF_GenerateSkeletonProjectName>
     <Name>nanoFramework.System.Text</Name>
-    <CodeAnalysisRuleSet>..\.sonarlint\nanoframework_lib-nanoframework.system.textcsharp.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>..\.sonarlint\nanoframework_lib-nanoframework.system.text\csharp.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
     <NFMDP_PE_ExcludeClassByName Include="ThisAssembly">
