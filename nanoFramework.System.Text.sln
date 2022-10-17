@@ -13,6 +13,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1A9B4D93-29BC-4314-ABF9-E4BC2A755032}"
+	ProjectSection(SolutionItems) = preProject
+		StringPerformanceTests.cs = StringPerformanceTests.cs
+	EndProjectSection
 EndProject
 Project("{11A8DD76-328B-46DF-9F39-F559912D0360}") = "NFUnitTestStringBuilder", "Tests\NFUnitTestStringBuilder\NFUnitTestStringBuilder.nfproj", "{C5331952-B712-4C77-939B-27589CED5A24}"
 EndProject
