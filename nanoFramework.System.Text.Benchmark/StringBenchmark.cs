@@ -153,41 +153,41 @@ namespace nanoFramework.System.Text.Benchmark
             concatString7 = String.Concat(_tokenString, _tokenString2, _tokenString3, _tokenString4);
         }
 
-        //[TestMethod]
-        //public void Empty_Test()
-        //{
-        //    RunTest(StringTests.Empty);
-        //}
+        [Benchmark]
+        public void Empty_Test()
+        {
+            var test = String.Empty;
+        }
 
-        //[TestMethod]
-        //public void Equals_Test_0()
-        //{
-        //    RunTest(StringTests.Equals0);
-        //}
+        [Benchmark]
+        public void Equals_Test_0()
+        {
+            String.Equals(_tokenCharArray, _tokenCharArray2);
+        }
 
-        //[TestMethod]
-        //public void Equals_Test_1()
-        //{
-        //    RunTest(StringTests.Equals1);
-        //}
+        [Benchmark]
+        public void Equals_Test_1()
+        {
+            String.Equals(_tokenString, _tokenString2);
+        }
 
-        //[TestMethod]
-        //public void Intern_Test()
-        //{
-        //    RunTest(StringTests.Intern);
-        //}
+        [Benchmark]
+        public void Intern_Test()
+        {
+            String.Intern(_tokenString);
+        }
 
-        //[TestMethod]
-        //public void IsInterned_Test()
-        //{
-        //    RunTest(StringTests.IsInterned);
-        //}
+        [Benchmark]
+        public void IsInterned_Test()
+        {
+            String.IsInterned(_tokenString2);
+        }
 
-        //[TestMethod]
-        //public void ReferenceEquals_Test()
-        //{
-        //    RunTest(StringTests.ReferenceEquals);
-        //}
+        [Benchmark]
+        public void ReferenceEquals_Test()
+        {
+            String.ReferenceEquals(_tokenCharArray, _tokenCharArray2);
+        }
 
         //[TestMethod]
         //public void CompareTo_Test0()
