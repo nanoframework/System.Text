@@ -26,11 +26,11 @@ namespace nanoFramework.System.Text.Benchmark
     {
         public StringBenchmark_1000() : base(1000) { }
     }
-    [IterationCount(1)]
-    public class StringBenchmark_10000 : StringBenchmark
-    {
-        public StringBenchmark_10000() : base(10000) { }
-    }
+    //[IterationCount(1)]
+    //public class StringBenchmark_10000 : StringBenchmark
+    //{
+    //    public StringBenchmark_10000() : base(10000) { }
+    //}
 
     [DebugLogger]
     [ConsoleParser]
@@ -38,8 +38,15 @@ namespace nanoFramework.System.Text.Benchmark
     public class StringBenchmark
     {
         int _stringLength = 1;
-        char[] _token;
-        char[] _token2;
+        char[] _tokenCharArray;
+        char[] _tokenCharArray2;
+        private char[] _tokenCharArray3;
+        string _tokenString;
+        private string _tokenString2;
+        private string _tokenString3;
+        private string _tokenString4;
+        object[] _tokenObjectArray;
+        string[] _tokenStringArray;
 
         public StringBenchmark()
         {
@@ -52,84 +59,99 @@ namespace nanoFramework.System.Text.Benchmark
         }
         void Setup()
         {
-            _token = GetTokenCharArray(_stringLength);
-            _token2 = GetTokenCharArray(_stringLength);
+            _tokenCharArray = GetTokenCharArray(_stringLength);
+            _tokenCharArray2 = GetTokenCharArray(_stringLength);
+            _tokenCharArray3 = GetTokenCharArray(_stringLength);
+            _tokenString = new string(_tokenCharArray);
+            _tokenString2 = new string(_tokenCharArray);
+            _tokenString3 = new string(_tokenCharArray);
+            _tokenString4 = new string(_tokenCharArray);
+            _tokenObjectArray = GetTokenObjectArray(_stringLength);
+            _tokenStringArray = GetTokenStringArray(_stringLength);
         }
 
 
         [Benchmark]
         public void Ctor_Test_0()
         {
-            var str0 = new String(_token);
+            var str0 = new String(_tokenCharArray);
         }
 
         [Benchmark]
         public void Ctor_Test_1()
         {
-            var str1 = new String(_token[0], _stringLength);
+            var str1 = new String(_tokenCharArray[0], _stringLength);
         }
 
         [Benchmark]
         public void Ctor_Test_2()
         {
-            var str2 = new String(_token, 0, _stringLength);
+            var str2 = new String(_tokenCharArray, 0, _stringLength);
         }
 
         [Benchmark]
         public void Compare_Test()
         {
-            String token1 = new String(_token);
-            String token2 = new String(_token2);
+            String token1 = new String(_tokenCharArray);
+            String token2 = new String(_tokenCharArray2);
             var compResult = String.Compare(token1, token2);
         }
 
-        //[TestMethod]
-        //public void Concat_Test_0()
-        //{
-        //    RunTest(StringTests.Concat0);
-        //}
+        [Benchmark]
+        public void Concat_Test_0()
+        {
+            String concatString0;
+            concatString0 = String.Concat((object)_tokenCharArray);
+        }
 
-        //[TestMethod]
-        //public void Concat_Test_1()
-        //{
-        //    RunTest(StringTests.Concat1);
-        //}
+        [Benchmark]
+        public void Concat_Test_1()
+        {
+            String concatString1;
+            concatString1 = String.Concat(_tokenObjectArray);
+        }
 
-        //[TestMethod]
-        //public void Concat_Test_2()
-        //{
-        //    RunTest(StringTests.Concat2);
-        //}
+        [Benchmark]
+        public void Concat_Test_2()
+        {
+            String concatString2;
+            concatString2 = String.Concat(_tokenStringArray);
+        }
 
-        //[TestMethod]
-        //public void Concat_Test_3()
-        //{
-        //    RunTest(StringTests.Concat3);
-        //}
+        [Benchmark]
+        public void Concat_Test_3()
+        {
+            String concatString3;
+            concatString3 = String.Concat(_tokenCharArray, _tokenCharArray2);
+        }
 
-        //[TestMethod]
-        //public void Concat_Test_4()
-        //{
-        //    RunTest(StringTests.Concat4);
-        //}
+        [Benchmark]
+        public void Concat_Test_4()
+        {
+            String concatString4;
+            concatString4 = String.Concat(_tokenString, _tokenString2);
+        }
 
-        //[TestMethod]
-        //public void Concat_Test_5()
-        //{
-        //    RunTest(StringTests.Concat5);
-        //}
+        [Benchmark]
+        public void Concat_Test_5()
+        {
+            String concatString5;
+            concatString5 = String.Concat(_tokenCharArray, _tokenCharArray2, _tokenCharArray3);
+        }
 
-        //[TestMethod]
-        //public void Concat_Test_6()
-        //{
-        //    RunTest(StringTests.Concat6);
-        //}
+        [Benchmark]
+        public void Concat_Test_6()
+        {
+            String concatString6;
+            concatString6 = String.Concat(_tokenString, _tokenString2, _tokenString3);
+        }
 
-        //[TestMethod]
-        //public void Concat_Test_7()
-        //{
-        //    RunTest(StringTests.Concat7);
-        //}
+        [Benchmark]
+        public void Concat_Test_7()
+        {
+            String concatString7;
+            concatString7 = String.Concat(_tokenString, _tokenString2, _tokenString3, _tokenString4);
+        }
 
         //[TestMethod]
         //public void Empty_Test()
