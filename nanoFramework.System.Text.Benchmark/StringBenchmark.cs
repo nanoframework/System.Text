@@ -8,22 +8,25 @@ using System.Text;
 
 namespace nanoFramework.System.Text.Benchmark
 {
-    [IterationCount(100)]
+
+    // TODO - set iterations back to 100
+
+    [IterationCount(1)]
     public class StringBenchmark_10 : StringBenchmark
     {
         public StringBenchmark_10() : base(10) { }
     }
-    [IterationCount(100)]
+    [IterationCount(1)]
     public class StringBenchmark_100 : StringBenchmark
     {
         public StringBenchmark_100() : base(100) { }
     }
-    [IterationCount(100)]
+    [IterationCount(1)]
     public class StringBenchmark_1000 : StringBenchmark
     {
         public StringBenchmark_1000() : base(1000) { }
     }
-    [IterationCount(100)]
+    [IterationCount(1)]
     public class StringBenchmark_10000 : StringBenchmark
     {
         public StringBenchmark_10000() : base(10000) { }
@@ -31,19 +34,26 @@ namespace nanoFramework.System.Text.Benchmark
 
     [DebugLogger]
     [ConsoleParser]
-    [IterationCount(100)]
+    [IterationCount(1)]
     public class StringBenchmark
     {
         int _stringLength = 1;
         char[] _token;
+        char[] _token2;
 
         public StringBenchmark()
         {
-            _token = GetTokenCharArray(_stringLength);
+            Setup();
         }
-        public StringBenchmark(int stringLength) : this()
+        public StringBenchmark(int stringLength)
         {
             _stringLength = stringLength;
+            Setup();
+        }
+        void Setup()
+        {
+            _token = GetTokenCharArray(_stringLength);
+            _token2 = GetTokenCharArray(_stringLength);
         }
 
 
@@ -59,17 +69,19 @@ namespace nanoFramework.System.Text.Benchmark
             var str1 = new String(_token[0], _stringLength);
         }
 
-        //[TestMethod]
-        //public void Ctor_Test_2()
-        //{
-        //    RunTest(StringTests.Ctor2);
-        //}
+        [Benchmark]
+        public void Ctor_Test_2()
+        {
+            var str2 = new String(_token, 0, _stringLength);
+        }
 
-        //[TestMethod]
-        //public void Compare_Test()
-        //{
-        //    RunTest(StringTests.Compare);
-        //}
+        [Benchmark]
+        public void Compare_Test()
+        {
+            String token1 = new String(_token);
+            String token2 = new String(_token2);
+            var compResult = String.Compare(token1, token2);
+        }
 
         //[TestMethod]
         //public void Concat_Test_0()
