@@ -9,14 +9,9 @@ namespace nanoFramework.System.Text.Benchmark
     {
         public static void Main()
         {
-
-            Debug.WriteLine("Hello from nanoFramework JSON benchmark!");
             BenchmarkRunner.Run(typeof(IAssemblyHandler).Assembly);
             Thread.Sleep(Timeout.Infinite);
         }
-    }
-    public interface IAssemblyHandler
-    {
     }
 
 }
