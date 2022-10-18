@@ -8,25 +8,22 @@ using System.Text;
 
 namespace nanoFramework.System.Text.Benchmark
 {
-
-    // TODO - set iterations back to 100
-
-    [IterationCount(1)]
+    [IterationCount(StringBenchmark.Iterations)]
     public class StringBenchmark_10 : StringBenchmark
     {
         public StringBenchmark_10() : base(10) { }
     }
-    [IterationCount(1)]
+    [IterationCount(StringBenchmark.Iterations)]
     public class StringBenchmark_100 : StringBenchmark
     {
         public StringBenchmark_100() : base(100) { }
     }
-    [IterationCount(1)]
+    [IterationCount(StringBenchmark.Iterations)]
     public class StringBenchmark_1000 : StringBenchmark
     {
         public StringBenchmark_1000() : base(1000) { }
     }
-    //[IterationCount(1)]
+    //[IterationCount(StringBenchmark.Iterations)]
     //public class StringBenchmark_10000 : StringBenchmark
     //{
     //    public StringBenchmark_10000() : base(10000) { }
@@ -34,9 +31,12 @@ namespace nanoFramework.System.Text.Benchmark
 
     [DebugLogger]
     [ConsoleParser]
-    [IterationCount(1)]
+    [IterationCount(StringBenchmark.Iterations)]
     public class StringBenchmark
     {
+        // TODO - set iterations back to 100
+        public const int Iterations = 1;
+
         int _stringLength = 1;
         char[] _tokenCharArray;
         char[] _tokenCharArray2;
