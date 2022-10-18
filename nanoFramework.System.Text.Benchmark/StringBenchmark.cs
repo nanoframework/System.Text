@@ -41,6 +41,7 @@ namespace nanoFramework.System.Text.Benchmark
         char[] _tokenCharArray;
         char[] _tokenCharArray2;
         private char[] _tokenCharArray3;
+        private object _tokenCharArrayObject;
         string _tokenString;
         private string _tokenString2;
         private string _tokenString3;
@@ -62,6 +63,7 @@ namespace nanoFramework.System.Text.Benchmark
             _tokenCharArray = GetTokenCharArray(_stringLength);
             _tokenCharArray2 = GetTokenCharArray(_stringLength);
             _tokenCharArray3 = GetTokenCharArray(_stringLength);
+            _tokenCharArrayObject = (object)_tokenCharArray;
             _tokenString = new string(_tokenCharArray);
             _tokenString2 = new string(_tokenCharArray);
             _tokenString3 = new string(_tokenCharArray);
@@ -170,6 +172,11 @@ namespace nanoFramework.System.Text.Benchmark
         {
             String.Equals(_tokenString, _tokenString2);
         }
+        [Benchmark]
+        public void Equals_Test_2()
+        {
+            _tokenString.Equals(_tokenCharArrayObject);
+        }
 
         [Benchmark]
         public void Intern_Test()
@@ -189,71 +196,65 @@ namespace nanoFramework.System.Text.Benchmark
             String.ReferenceEquals(_tokenCharArray, _tokenCharArray2);
         }
 
-        //[TestMethod]
-        //public void CompareTo_Test0()
-        //{
-        //    RunTest(StringTests.CompareTo0);
-        //}
+        [Benchmark]
+        public void CompareTo_Test0()
+        {
+            _tokenString.CompareTo(_tokenCharArrayObject);
+        }
 
-        //[TestMethod]
-        //public void CompareTo_Test1()
-        //{
-        //    RunTest(StringTests.CompareTo1);
-        //}
+        [Benchmark]
+        public void CompareTo_Test1()
+        {
+            _tokenString.CompareTo(_tokenString2);
+        }
 
-        //[TestMethod]
-        //public void Equals_Test2()
-        //{
-        //    RunTest(StringTests.Equals2);
-        //}
+        [Benchmark]
+        public void GetHashCode_Test()
+        {
+            _tokenString.GetHashCode();
+        }
 
-        //[TestMethod]
-        //public void GetHashCode_Test()
-        //{
-        //    RunTest(StringTests.GetHashCode);
-        //}
+        [Benchmark]
+        public void GetType_Test()
+        {
+            _tokenString.GetType();
+        }
 
-        //[TestMethod]
-        //public void GetType_Test()
-        //{
-        //    RunTest(StringTests.GetType);
-        //}
+        [Benchmark]
+        public void IndexOf_Test_0()
+        {
+            _tokenString.IndexOf(_tokenCharArray[0]);
+        }
 
-        //[TestMethod]
-        //public void IndexOf_Test_0()
-        //{
-        //    RunTest(StringTests.IndexOf0);
-        //}
+        [Benchmark]
+        public void IndexOf_Test_1()
+        {
+            _tokenString.IndexOf(_tokenString2);
+        }
 
-        //[TestMethod]
-        //public void IndexOf_Test_1()
-        //{
-        //    RunTest(StringTests.IndexOf1);
-        //}
+        [Benchmark]
+        public void IndexOf_Test_2()
+        {
+            _tokenString.IndexOf(_tokenCharArray[0], 0);
+        }
 
-        //[TestMethod]
-        //public void IndexOf_Test_2()
-        //{
-        //    RunTest(StringTests.IndexOf2);
-        //}
+        [Benchmark]
+        public void IndexOf_Test_3()
+        {
+            _tokenString.IndexOf(_tokenString2, 0);
+        }
 
-        //[TestMethod]
-        //public void IndexOf_Test_3()
-        //{
-        //    RunTest(StringTests.IndexOf3);
-        //}
+        [Benchmark]
+        public void IndexOf_Test_4()
+        {
+            _tokenString.IndexOf(_tokenCharArray[0], 0, 1);
+        }
 
-        //[TestMethod]
-        //public void IndexOf_Test_4()
-        //{
-        //    RunTest(StringTests.IndexOf4);
-        //}
-
-        //[TestMethod]
-        //public void IndexOf_Test_5()
-        //{
-        //    RunTest(StringTests.IndexOf5);
-        //}
+        [Benchmark]
+        public void IndexOf_Test_5()
+        {
+            _tokenString.IndexOf(_tokenString2, 0, 1);
+        }
 
         //[TestMethod]
         //public void IndexOfAny_Test_0()
