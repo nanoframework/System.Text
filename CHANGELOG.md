@@ -2,7 +2,17 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Text/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.2.3...HEAD)
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.2.7...HEAD)
+
+**Documentation and other chores:**
+
+- Update 1 NuGet dependencies [\#106](https://github.com/nanoframework/System.Text/pull/106)
+- Added string performance tests from MicroFramework [\#105](https://github.com/nanoframework/System.Text/pull/105)
+- Update 1 NuGet dependencies [\#102](https://github.com/nanoframework/System.Text/pull/102)
+
+## [v1.2.7](https://github.com/nanoframework/System.Text/tree/v1.2.7) (2022-09-10)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.2.3...v1.2.7)
 
 **Documentation and other chores:**
 
