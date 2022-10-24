@@ -16,9 +16,9 @@
       },
       "nanoFramework.Logging": {
         "type": "Direct",
-        "requested": "[1.1.27, 1.1.27]",
-        "resolved": "1.1.27",
-        "contentHash": "PB0hyd4WbWrZvZhmW0sRpt1pbBowiWb+IJhoXOWKtW9nHegFcAUTekzePRZG1JuRYvYkGIWko4jy63S2LHqAOA=="
+        "requested": "[1.1.31, 1.1.31]",
+        "resolved": "1.1.31",
+        "contentHash": "payFCfkVPTecxccunEV4gGldWM0WFwdgPeuCtbX46NKeAK+eQ2kmxsNJ5ItEKmmpLUsumG4JAoSYfQ3HiwCUeA=="
       },
       "nanoFramework.Runtime.Native": {
         "type": "Direct",
@@ -40,9 +40,9 @@
       },
       "nanoFramework.System.Text": {
         "type": "Direct",
-        "requested": "[1.2.7, 1.2.7]",
-        "resolved": "1.2.7",
-        "contentHash": "ax4CrqYHNXoEBjaIW7dIv1CM4PxWcCc6lN2xSzGLZf7F/JZ0O7t0el86PPN2P/DfOyyBKSDAmrZjEx4q8mvgSw=="
+        "requested": "[1.2.15, 1.2.15]",
+        "resolved": "1.2.15",
+        "contentHash": "W6msO13WmdxzwcGK+fNLWOYZ4FH9NUVbhKVwICSLJg+esfKHF1HwVIPHZwfbrg51wBtnpb+mZTlA23Cx5CqNng=="
       }
     }
   }
