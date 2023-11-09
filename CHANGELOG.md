@@ -2,7 +2,27 @@
 
 ## [**Changes available only in 'Preview' NuGet packages:**](https://github.com/nanoframework/System.Text/tree/HEAD)
 
-[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.2.22...HEAD)
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.2.37...HEAD)
+
+**Documentation and other chores:**
+
+- Update 5 NuGet dependencies [\#141](https://github.com/nanoframework/System.Text/pull/141)
+- Update 3 NuGet dependencies [\#139](https://github.com/nanoframework/System.Text/pull/139)
+- Update 1 NuGet dependencies [\#138](https://github.com/nanoframework/System.Text/pull/138)
+- Update 2 NuGet dependencies [\#137](https://github.com/nanoframework/System.Text/pull/137)
+- Update 1 NuGet dependencies [\#136](https://github.com/nanoframework/System.Text/pull/136)
+- Update 2 NuGet dependencies [\#135](https://github.com/nanoframework/System.Text/pull/135)
+- Update 2 NuGet dependencies [\#134](https://github.com/nanoframework/System.Text/pull/134)
+- Update 1 NuGet dependencies [\#132](https://github.com/nanoframework/System.Text/pull/132)
+- Update 2 NuGet dependencies [\#131](https://github.com/nanoframework/System.Text/pull/131)
+- Update 1 NuGet dependencies [\#130](https://github.com/nanoframework/System.Text/pull/130)
+- Update 1 NuGet dependencies [\#129](https://github.com/nanoframework/System.Text/pull/129)
+- Update 2 NuGet dependencies [\#128](https://github.com/nanoframework/System.Text/pull/128)
+- Update 2 NuGet dependencies [\#127](https://github.com/nanoframework/System.Text/pull/127)
+
+## [v1.2.37](https://github.com/nanoframework/System.Text/tree/v1.2.37) (2022-12-28)
+
+[Full Changelog](https://github.com/nanoframework/System.Text/compare/v1.2.22...v1.2.37)
 
 **Documentation and other chores:**
 
