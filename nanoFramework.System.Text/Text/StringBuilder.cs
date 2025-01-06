@@ -19,6 +19,10 @@ namespace System.Text
     /// </remarks>
     public sealed class StringBuilder
     {
+        private const int DefaultCapacity = 0x10;
+        private const int DefaultMaxCapacity = short.MaxValue;
+        private const int MaxChunkSize = 8000;
+
         #region Fields
 
         private readonly int _maxCapacity;
@@ -221,60 +225,126 @@ namespace System.Text
         /// <summary>
         /// Initializes a new instance of the <see cref="StringBuilder"/> class from the specified substring and capacity. 
         /// </summary>
-        /// <param name="value">The string that contains the substring used to initialize the value of this instance. If value is null, the new StringBuilder will contain the empty string (that is, it contains Empty).</param>
+        /// <param name="value">The string that contains the substring used to initialize the value of this instance. If value is <see langword="null"/>, the new <see cref="StringBuilder"/> will contain the empty string (that is, it contains <see cref="string.Empty"/>).</param>
         /// <param name="startIndex">The position within value where the substring begins.</param>
         /// <param name="length">The number of characters in the substring.</param>
         /// <param name="capacity">The suggested starting size of the <see cref="StringBuilder"/>.</param>
-        public unsafe StringBuilder(string value, int startIndex, int length, int capacity)
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="capacity"/> is less than zero, <paramref name="length"/> is less than zero, <paramref name="startIndex"/> is less than zero, or <paramref name="startIndex"/> is greater than the length of <paramref name="value"/> minus <paramref name="length"/>.</exception>
+        public unsafe StringBuilder(
+            string value,
+            int startIndex,
+            int length,
+            int capacity)
         {
-            if (capacity < 0) throw new ArgumentOutOfRangeException("capacity");
-            if (length < 0) throw new ArgumentOutOfRangeException("length");
-            if (startIndex < 0) throw new ArgumentOutOfRangeException("startIndex");
-            if (value == null) value = string.Empty;
-            if (startIndex > value.Length - length) throw new ArgumentOutOfRangeException("length");
-            _maxCapacity = 0x7fffffff;
-            if (capacity == 0) capacity = 0x10;
-            if (capacity < length) capacity = length;
-            //Allocate the chunk of capactity
+            if (capacity < 0 || length < 0 || startIndex < 0)
+            {
+#pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
+                throw new ArgumentOutOfRangeException();
+#pragma warning restore S3928 // OK to use in .NET nanoFramework context
+            }
+
+            value ??= string.Empty;
+
+            if (startIndex > value.Length - length)
+            {
+#pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
+                throw new ArgumentOutOfRangeException();
+#pragma warning restore S3928 // OK to use in .NET nanoFramework context
+            }
+
+            _maxCapacity = DefaultMaxCapacity;
+
+            if (capacity == 0)
+            {
+                capacity = DefaultCapacity;
+            }
+
+            if (capacity < length)
+            {
+                capacity = length;
+            }
+
+            // Allocate the chunk of capactity
             _chunkChars = new char[capacity];
-            //Set the length of the chunk
+
+            // Set the length of the chunk
             _chunkLength = length;
-            //Copy the value to the chunkChars
+
+            // Copy the value to the chunkChars
             value.ToCharArray(startIndex, length).CopyTo(_chunkChars, 0);
         }
 
-        private StringBuilder(int size, int maxCapacity, StringBuilder previousBlock)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StringBuilder"/> class using the specified string and capacity.
+        /// </summary>
+        /// <param name="value">The string used to initialize the value of the instance. If value is <see langword="null"/>, the new <see cref="StringBuilder"/> will contain the empty string (that is, it contains <see cref="string.Empty"/>).</param>
+        /// <param name="capacity">The suggested starting size of the StringBuilder.</param>
+        public StringBuilder(
+            string value,
+            int capacity)
+            : this(value, 0, value
+                  != null ? value.Length : 0, capacity)
+        { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StringBuilder"/> class that starts with a specified capacity and can grow to a specified maximum. 
+        /// </summary>
+        /// <param name="capacity">The suggested starting size of the <see cref="StringBuilder"/>.</param>
+        /// <param name="maxCapacity">The maximum number of characters the current string can contain.</param>
+        /// <exception cref="ArgumentOutOfRangeException">If <paramref name="capacity"/> is less than zero, <paramref name="maxCapacity"/> is less than one, or <paramref name="capacity"/> is greater than <paramref name="maxCapacity"/>.</exception>
+        public StringBuilder(
+            int capacity,
+            int maxCapacity)
+        {
+            if (capacity > maxCapacity || maxCapacity < 1 || capacity < 0)
+            {
+#pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
+                throw new ArgumentOutOfRangeException();
+#pragma warning restore S3928 // OK to use in .NET nanoFramework context
+            }
+
+            if (capacity == 0)
+            {
+                capacity = MathInternal.Min(DefaultCapacity, maxCapacity);
+            }
+
+            _maxCapacity = maxCapacity;
+            _chunkChars = new char[capacity];
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StringBuilder"/> class using the specified capacity. 
+        /// </summary>
+        /// <param name="capacity">The suggested starting size of this instance.</param>
+        public StringBuilder(int capacity)
+            : this(string.Empty, capacity) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StringBuilder"/> class using the specified string. 
+        /// </summary>
+        /// <param name="value">The string used to initialize the value of the instance. If value is <see langword="null"/>, the new <see cref="StringBuilder"/> will contain the empty string (that is, it contains <see cref="string.Empty"/>).</param>
+        public StringBuilder(string value)
+            : this(value, DefaultCapacity) { }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StringBuilder"/> class. 
+        /// </summary>
+        public StringBuilder()
+            : this(DefaultCapacity) { }
+
+        private StringBuilder(
+            int size,
+            int maxCapacity,
+            StringBuilder previousBlock)
         {
             _chunkChars = new char[size];
             _maxCapacity = maxCapacity;
             _chunkPrevious = previousBlock;
+
             if (previousBlock != null)
             {
                 _chunkOffset = previousBlock._chunkOffset + previousBlock._chunkLength;
             }
-        }
-
-        /// <summary>
-        /// Initializes a new instance of  the <see cref="StringBuilder"/> class using the specified string and capacity.
-        /// </summary>
-        /// <param name="value">The string used to initialize the value of the instance. If value is null, the new StringBuilder will contain the empty string (that is, it contains Empty).</param>
-        /// <param name="capacity">The suggested starting size of the <see cref="StringBuilder"/>.</param>
-        public StringBuilder(string value, int capacity)
-            : this(value, 0, value != null ? value.Length : 0, capacity) { }
-
-        /// <summary>
-        /// Initializes a new instance of  the <see cref="StringBuilder"/> class that starts with a specified capacity and can grow to a specified maximum. 
-        /// </summary>
-        /// <param name="capacity">The suggested starting size of the <see cref="StringBuilder"/>.</param>
-        /// <param name="maxCapacity">The maximum number of characters the current string can contain.</param>
-        public StringBuilder(int capacity, int maxCapacity)
-        {
-            if (capacity > maxCapacity) throw new ArgumentOutOfRangeException("capacity");
-            if (maxCapacity < 1) throw new ArgumentOutOfRangeException("maxCapacity");
-            if (capacity < 0) throw new ArgumentOutOfRangeException("capacity");
-            if (capacity == 0) capacity = MathInternal.Min(0x10, maxCapacity);
-            _maxCapacity = maxCapacity;
-            _chunkChars = new char[capacity];
         }
 
         private StringBuilder(StringBuilder from)
@@ -285,26 +355,6 @@ namespace System.Text
             _chunkPrevious = from._chunkPrevious;
             _maxCapacity = from._maxCapacity;
         }
-
-        /// <summary>
-        /// Initializes a new instance of  the <see cref="StringBuilder"/> class using the specified capacity. 
-        /// </summary>
-        /// <param name="capacity">The suggested starting size of this instance.</param>
-        public StringBuilder(int capacity)
-            : this(string.Empty, capacity) { }
-
-        /// <summary>
-        /// Initializes a new instance of  the <see cref="StringBuilder"/> class using the specified string. 
-        /// </summary>
-        /// <param name="value">The string used to initialize the value of the instance. If value is <see langword="null"/>, the new <see cref="StringBuilder"/> will contain the empty string (that is, it contains <see cref="String.Empty"/>).</param>
-        public StringBuilder(string value)
-            : this(value, 0x10) { }
-
-        /// <summary>
-        /// Initializes a new instance of  the <see cref="StringBuilder"/> class. 
-        /// </summary>
-        public StringBuilder()
-            : this(0x10) { }
 
         #endregion
 
