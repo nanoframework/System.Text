@@ -21,11 +21,11 @@ namespace System.Text
     {
         #region Fields
 
-        int _maxCapacity;
-        char[] _chunkChars;
-        int _chunkLength;
-        StringBuilder _chunkPrevious;
-        int _chunkOffset;
+        private readonly int _maxCapacity;
+        private char[] _chunkChars;
+        private int _chunkLength;
+        private StringBuilder _chunkPrevious;
+        private int _chunkOffset;
 
         #endregion
 
@@ -35,39 +35,40 @@ namespace System.Text
         /// Gets the maximum capacity of this instance.
         /// </summary>
         /// <value>The maximum number of characters this instance can hold.</value>
-        public int MaxCapacity
-        {
-            get
-            {
-                return _maxCapacity;
-            }
-        }
+        public int MaxCapacity => _maxCapacity;
 
         /// <summary>
         /// Gets or sets the character at the specified character position in this instance.
         /// </summary>
         /// <param name="index">The position of the character.</param>
         /// <returns>The Unicode character at position index.</returns>
+        /// <exception cref="IndexOutOfRangeException"><paramref name="index"/> is outside the bounds of this instance while getting a character.</exception>"
+        /// <exception cref="ArgumentOutOfRangeException"><paramref name="index"/> is outside the bounds of this instance while setting a character.</exception>"
         public char this[int index]
         {
             get
             {
-                var chunkPrevious = this;
+                StringBuilder chunk = this;
+
                 while (true)
                 {
-                    var num = index - chunkPrevious._chunkOffset;
-                    if (num >= 0)
+                    int indexInBlock = index - chunk._chunkOffset;
+
+                    if (indexInBlock >= 0)
                     {
-                        if (num >= chunkPrevious._chunkLength)
+                        if (indexInBlock >= chunk._chunkLength)
                         {
 #pragma warning disable S112 // General exceptions should never be thrown
                             throw new IndexOutOfRangeException();
 #pragma warning restore S112 // General exceptions should never be thrown
                         }
-                        return chunkPrevious._chunkChars[num];
+
+                        return chunk._chunkChars[indexInBlock];
                     }
-                    chunkPrevious = chunkPrevious._chunkPrevious;
-                    if (chunkPrevious == null)
+
+                    chunk = chunk._chunkPrevious;
+
+                    if (chunk == null)
                     {
 #pragma warning disable S112 // General exceptions should never be thrown
                         throw new IndexOutOfRangeException();
@@ -75,27 +76,36 @@ namespace System.Text
                     }
                 }
             }
+
             set
             {
-                var chunkPrevious = this;
-            Label_0002:
-                var num = index - chunkPrevious._chunkOffset;
-                if (num >= 0)
+                StringBuilder chunk = this;
+
+                while (true)
                 {
-                    if (num >= chunkPrevious._chunkLength)
+                    int indexInBlock = index - chunk._chunkOffset;
+
+                    if (indexInBlock >= 0)
                     {
-                        throw new ArgumentOutOfRangeException("index");
+                        if (indexInBlock >= chunk._chunkLength)
+                        {
+#pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
+                            throw new ArgumentOutOfRangeException();
+#pragma warning restore S3928 // OK to use in .NET nanoFramework context
+                        }
+
+                        chunk._chunkChars[indexInBlock] = value;
+                        return;
                     }
-                    chunkPrevious._chunkChars[num] = value;
-                }
-                else
-                {
-                    chunkPrevious = chunkPrevious._chunkPrevious;
-                    if (chunkPrevious == null)
+
+                    chunk = chunk._chunkPrevious;
+
+                    if (chunk == null)
                     {
-                        throw new ArgumentOutOfRangeException("index");
+#pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
+                        throw new ArgumentOutOfRangeException();
+#pragma warning restore S3928 // OK to use in .NET nanoFramework context
                     }
-                    goto Label_0002;
                 }
             }
         }
@@ -106,72 +116,101 @@ namespace System.Text
         /// <value>
         /// The maximum number of characters that can be contained in the memory allocated by the current instance. Its value can range from Length to MaxCapacity.
         /// </value>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
+        /// <exception cref="System.ArgumentOutOfRangeException">
+        /// <para>The value specified for a set operation is less than the current length of this instance.</para>
+        /// <para>-or-</para>
+        /// <para>The value specified for a set operation is greater than the maximum capacity.</para>
+        /// </exception>
         public int Capacity
         {
-            get
-            {
-                return _chunkChars.Length + _chunkOffset;
-            }
+            get => _chunkChars.Length + _chunkOffset;
+
             set
             {
-                if (value < 0) throw new ArgumentOutOfRangeException("value");
-                if (value > MaxCapacity) throw new ArgumentOutOfRangeException("value");
-                if (value < Length) throw new ArgumentOutOfRangeException("value");
+                if (value < 0 || value > MaxCapacity || value < Length)
+                {
+#pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
+                    throw new ArgumentOutOfRangeException();
+#pragma warning restore S3928 // OK to use in .NET nanoFramework context
+                }
+
                 if (Capacity != value)
                 {
-                    var num = value - _chunkOffset;
-                    var destinationArray = new char[num];
+                    int num = value - _chunkOffset;
+                    char[] destinationArray = new char[num];
+
                     Array.Copy(_chunkChars, destinationArray, _chunkLength);
+
                     _chunkChars = destinationArray;
                 }
             }
         }
 
         /// <summary>
-        /// Gets or sets the length of the current StringBuilder object.
+        /// Gets or sets the length of the current <see cref="StringBuilder"/> object.
         /// </summary>
         /// <value>The length of this instance.</value>
-        /// <exception cref="System.ArgumentOutOfRangeException"></exception>
+        /// <exception cref="ArgumentOutOfRangeException">If <see cref="Length"/> is set to a value that is less than zero or greater than <see cref="MaxCapacity"/>.</exception>
         public int Length
         {
-            get
-            {
-                return _chunkOffset + _chunkLength;
-            }
+            get => _chunkOffset + _chunkLength;
+
             set
             {
-                if (value < 0) throw new ArgumentOutOfRangeException("value");
-                if (value > MaxCapacity) throw new ArgumentOutOfRangeException("value");
-                var capacity = Capacity;
+                if (value < 0 || value > MaxCapacity)
+                {
+#pragma warning disable S3928 // Parameter names used into ArgumentException constructors should match an existing one 
+                    throw new ArgumentOutOfRangeException();
+#pragma warning restore S3928 // OK to use in .NET nanoFramework context
+                }
+
                 if (value == 0 && _chunkPrevious == null)
                 {
                     _chunkLength = 0;
                     _chunkOffset = 0;
+
+                    return;
+                }
+
+                int delta = value - Length;
+
+                if (delta > 0)
+                {
+                    // Pad ourselves with null characters.
+                    Append('\0', delta);
                 }
                 else
                 {
-                    var repeatCount = value - Length;
-                    if (repeatCount > 0)
-                    {
-                        Append('\0', repeatCount);
-                    }
-                    else
-                    {
-                        var builder = FindChunkForIndex(value);
-                        if (builder != this)
-                        {
-                            var num3 = capacity - builder._chunkOffset;
-                            var destinationArray = new char[num3];
-                            Array.Copy(builder._chunkChars, destinationArray, builder._chunkLength);
-                            _chunkChars = destinationArray;
-                            _chunkPrevious = builder._chunkPrevious;
-                            _chunkOffset = builder._chunkOffset;
-                        }
-                        _chunkLength = value - builder._chunkOffset;
-                    }
-                }
+                    StringBuilder chunk = FindChunkForIndex(value);
 
+                    if (chunk != this)
+                    {
+                        // Avoid possible infinite capacity growth.  See https://github.com/dotnet/coreclr/pull/16926
+                        int capacityToPreserve = MathInternal.Min(Capacity, MathInternal.Max(Length * 6 / 5, _chunkChars.Length));
+                        int newLen = capacityToPreserve - chunk._chunkOffset;
+
+                        if (newLen > chunk._chunkChars.Length)
+                        {
+                            // We crossed a chunk boundary when reducing the Length. We must replace this middle-chunk with a new larger chunk,
+                            // to ensure the capacity we want is preserved.
+                            char[] newArray = new char[newLen];
+                            Array.Copy(chunk._chunkChars, newArray, chunk._chunkLength);
+                            _chunkChars = newArray;
+                        }
+                        else
+                        {
+                            // Special case where the capacity we want to keep corresponds exactly to the size of the content.
+                            // Just take ownership of the array.
+                            _chunkChars = chunk._chunkChars;
+                        }
+
+                        _chunkPrevious = chunk._chunkPrevious;
+                        _chunkOffset = chunk._chunkOffset;
+
+                    }
+
+                    _chunkLength = value - chunk._chunkOffset;
+                }
             }
         }
 
