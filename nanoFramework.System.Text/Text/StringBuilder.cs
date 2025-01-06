@@ -906,12 +906,12 @@ namespace System.Text
                     int index = indexInChunk + chunk._chunkOffset;
 
                     ReplaceAllInChunk(sourceArray, replacementsCount, chunk, oldLength, newValue);
-                    
+
                     index += (newLength - oldLength) * replacementsCount;
                     replacementsCount = 0;
-                    
+
                     chunk = FindChunkForIndex(index);
-                    
+
                     indexInChunk = index - chunk._chunkOffset;
                 }
             }
@@ -1138,13 +1138,13 @@ namespace System.Text
             {
                 // Determine the amount of characters to remove
                 int count = (value.Length - removeCount) * replacementsCount;
-                
+
                 // Scope the working chunk
                 StringBuilder chunk = sourceChunk;
-                
+
                 // Determine the index of the first replacement
                 int indexInChunk = replacements[0];
-                
+
                 // If there is a character being added make room
                 if (count > 0)
                 {
@@ -1169,7 +1169,7 @@ namespace System.Text
                     chars,
                     ref replacementIndex,
                     value.Length);
-               
+
                 if (replacementIndex == value.Length)
                 {
                     replacementIndex = 0;
@@ -1177,10 +1177,10 @@ namespace System.Text
 
                 // Determine the next replacement 
                 int valueIndex = replacements[index] + removeCount;
-                
+
                 // Move the pointer of the working replacement
                 ++index;
-                
+
                 // If we are not past the replacement boundary
                 if (index < replacementsCount)
                 {
@@ -1242,7 +1242,7 @@ namespace System.Text
             while (true)
             {
                 int length = MathInternal.Min(chunk._chunkLength - indexInChunk, count);
-                
+
                 Array.Copy(
                     value,
                     valueIndex,
@@ -1283,7 +1283,7 @@ namespace System.Text
 #pragma warning restore S3928 // OK to use in .NET nanoFramework context
 
             chunk = this;
-            
+
             while (chunk._chunkOffset > index)
             {
                 chunk._chunkOffset += count;
@@ -1314,9 +1314,9 @@ namespace System.Text
                     chunk._chunkPrevious);
 
                 builder._chunkLength = count;
-                
+
                 int length = MathInternal.Min(count, indexInChunk);
-                
+
                 if (length > 0)
                 {
                     Array.Copy(
@@ -1325,9 +1325,9 @@ namespace System.Text
                         builder._chunkChars,
                         0,
                         length);
-                    
+
                     int nextLength = indexInChunk - length;
-                    
+
                     if (nextLength >= 0)
                     {
                         Array.Copy(
@@ -1336,7 +1336,7 @@ namespace System.Text
                             chunk._chunkChars,
                             0,
                             nextLength);
-                        
+
                         indexInChunk = nextLength;
                     }
                 }
@@ -1355,7 +1355,7 @@ namespace System.Text
         internal StringBuilder FindChunkForIndex(int index)
         {
             StringBuilder chunkPrevious = this;
-            
+
             while (chunkPrevious._chunkOffset > index)
             {
                 chunkPrevious = chunkPrevious._chunkPrevious;
@@ -1411,10 +1411,10 @@ namespace System.Text
         {
             int num = startIndex + count;
             chunk = this;
-           
+
             StringBuilder builder = null;
             int sourceIndex = 0;
-            
+
             while (true)
             {
                 if (num - chunk._chunkOffset >= 0)
@@ -1430,14 +1430,14 @@ namespace System.Text
                         indexInChunk = startIndex - chunk._chunkOffset;
                         int destinationIndex = indexInChunk;
                         int num4 = builder._chunkLength - sourceIndex;
-                        
+
                         if (builder != chunk)
                         {
                             destinationIndex = 0;
                             chunk._chunkLength = indexInChunk;
                             builder._chunkPrevious = chunk;
                             builder._chunkOffset = chunk._chunkOffset + chunk._chunkLength;
-                           
+
                             if (indexInChunk == 0)
                             {
                                 builder._chunkPrevious = chunk._chunkPrevious;
@@ -1507,9 +1507,9 @@ namespace System.Text
                 }
 
                 int minBlockCharCount = valueCount - count;
-                
+
                 ExpandByABlock(minBlockCharCount);
-                
+
                 Array.Copy(
                     value,
                     count,
