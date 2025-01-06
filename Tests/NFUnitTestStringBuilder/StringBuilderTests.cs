@@ -25,35 +25,35 @@ namespace NFUnitTestStringBuilder
         public void Test_0_AppendTest_0()
         {
             stringBuilder.Append(true);
-            Assert.Equal(stringBuilder.ToString(), Boolean.TrueString);
+            Assert.AreEqual(bool.TrueString, stringBuilder.ToString());
             stringBuilder.Append(false);
-            Assert.Equal(stringBuilder.ToString(), string.Concat(Boolean.TrueString, Boolean.FalseString));
+            Assert.AreEqual(string.Concat(bool.TrueString, bool.FalseString), stringBuilder.ToString());
             stringBuilder.Append(byte.MinValue);
-            Assert.Equal(stringBuilder.ToString(), string.Concat(Boolean.TrueString, Boolean.FalseString, byte.MinValue));
+            Assert.AreEqual(string.Concat(bool.TrueString, bool.FalseString, byte.MinValue), stringBuilder.ToString());
             stringBuilder.Append(new char[] { 'x', 'a' });
-            Assert.Equal(stringBuilder.ToString(), string.Concat(Boolean.TrueString, Boolean.FalseString, byte.MinValue, char.MinValue, "xa"));
+            Assert.AreEqual(string.Concat(bool.TrueString, bool.FalseString, byte.MinValue, char.MinValue, "xa"), stringBuilder.ToString());
             stringBuilder.Append(double.Epsilon);
-            Assert.Equal(stringBuilder.ToString(), string.Concat(Boolean.TrueString, Boolean.FalseString, byte.MinValue, char.MinValue, "xa", double.Epsilon.ToString()));
+            Assert.AreEqual(string.Concat(bool.TrueString, bool.FalseString, byte.MinValue, char.MinValue, "xa", double.Epsilon.ToString()), stringBuilder.ToString());
             stringBuilder.Append(float.Epsilon);
-            Assert.Equal(stringBuilder.ToString(), string.Concat(Boolean.TrueString, Boolean.FalseString, byte.MinValue, char.MinValue, "xa", double.Epsilon.ToString(), float.Epsilon.ToString()));
+            Assert.AreEqual(string.Concat(bool.TrueString, bool.FalseString, byte.MinValue, char.MinValue, "xa", double.Epsilon.ToString(), float.Epsilon.ToString()), stringBuilder.ToString());
             stringBuilder.Append(int.MaxValue);
-            Assert.Equal(stringBuilder.ToString(), string.Concat(Boolean.TrueString, Boolean.FalseString, byte.MinValue, char.MinValue, "xa", double.Epsilon.ToString(), float.Epsilon.ToString(), int.MaxValue));
+            Assert.AreEqual(string.Concat(bool.TrueString, bool.FalseString, byte.MinValue, char.MinValue, "xa", double.Epsilon.ToString(), float.Epsilon.ToString(), int.MaxValue), stringBuilder.ToString());
             stringBuilder.Append(long.MaxValue);
-            Assert.Equal(stringBuilder.ToString(), string.Concat(Boolean.TrueString, Boolean.FalseString, byte.MinValue, char.MinValue, "xa", double.Epsilon.ToString(), float.Epsilon.ToString(), int.MaxValue, long.MaxValue));
+            Assert.AreEqual(string.Concat(bool.TrueString, bool.FalseString, byte.MinValue, char.MinValue, "xa", double.Epsilon.ToString(), float.Epsilon.ToString(), int.MaxValue, long.MaxValue), stringBuilder.ToString());
             stringBuilder.Append((object)"string");
-            Assert.Equal(stringBuilder.ToString(), string.Concat(Boolean.TrueString, Boolean.FalseString, byte.MinValue, char.MinValue, "xa", double.Epsilon.ToString(), float.Epsilon.ToString(), int.MaxValue, long.MaxValue, "string"));
+            Assert.AreEqual(string.Concat(bool.TrueString, bool.FalseString, byte.MinValue, char.MinValue, "xa", double.Epsilon.ToString(), float.Epsilon.ToString(), int.MaxValue, long.MaxValue, "string"), stringBuilder.ToString());
         }
 
         [TestMethod]
         public void Test_1_RemoveTest_0()
         {
-            Assert.Equal(stringBuilder.Clear().ToString(), string.Empty);
+            Assert.AreEqual(string.Empty, stringBuilder.Clear().ToString());
             string testString = "0123456789";
             stringBuilder.Append(testString);
             stringBuilder.Remove(0, 1);
-            Assert.Equal(stringBuilder.ToString(), "123456789");
+            Assert.AreEqual("123456789", stringBuilder.ToString());
             stringBuilder.Remove(stringBuilder.Length - 1, 1);
-            Assert.Equal(stringBuilder.ToString(), "12345678");
+            Assert.AreEqual("12345678", stringBuilder.ToString());
         }
 
         [TestMethod]
@@ -63,9 +63,9 @@ namespace NFUnitTestStringBuilder
             string testString = "0000";
             stringBuilder.Append(testString);
             stringBuilder.Insert(0, "x", 2);
-            Assert.Equal(stringBuilder.ToString(), "xx0000");
+            Assert.AreEqual("xx0000", stringBuilder.ToString());
             stringBuilder.Insert(stringBuilder.Length, "x", 2);
-            Assert.Equal(stringBuilder.ToString(), "xx0000xx");
+            Assert.AreEqual("xx0000xx", stringBuilder.ToString());
         }
 
         [TestMethod]
@@ -77,14 +77,14 @@ namespace NFUnitTestStringBuilder
             stringBuilder.Append("_");
             stringBuilder.Append(testString);
             stringBuilder.Replace(testString, "xx");
-            Assert.Equal(stringBuilder.ToString(), "xx_xx");
+            Assert.AreEqual("xx_xx", stringBuilder.ToString());
         }
 
         [TestMethod]
         public void Test_3_ReplaceTest_1()
         {
-            stringBuilder.Clear(); string testString = "BEGIN";
-            //stringBuilder.Append("BEGIN_MID_END");
+            stringBuilder.Clear();
+            string testString = "BEGIN";
             stringBuilder.Append('B');
             stringBuilder.Append('E');
             stringBuilder.Append('G');
@@ -99,7 +99,7 @@ namespace NFUnitTestStringBuilder
             stringBuilder.Append('N');
             stringBuilder.Append('D');
             stringBuilder.Replace(testString, "xx");
-            Assert.Equal(stringBuilder.ToString(), "xx_MID_END");
+            Assert.AreEqual("xx_MID_END", stringBuilder.ToString());
         }
 
         [TestMethod]
@@ -107,7 +107,7 @@ namespace NFUnitTestStringBuilder
         {
             string testString = "MID";
             stringBuilder.Replace(testString, "xx");
-            Assert.Equal(stringBuilder.ToString(), "xx_xx_END");
+            Assert.AreEqual("xx_xx_END", stringBuilder.ToString());
         }
 
         [TestMethod]
@@ -115,7 +115,7 @@ namespace NFUnitTestStringBuilder
         {
             string testString = "END";
             stringBuilder.Replace(testString, "xx");
-            Assert.Equal(stringBuilder.ToString(), "xx_xx_xx");
+            Assert.AreEqual("xx_xx_xx", stringBuilder.ToString());
         }
 
         [TestMethod]
@@ -124,13 +124,13 @@ namespace NFUnitTestStringBuilder
             string testString = "The quick br!wn d#g jumps #ver the lazy cat.";
             stringBuilder = new System.Text.StringBuilder(testString);
             stringBuilder.Replace('#', '!', 15, 29);        // Some '#' -> '!'
-            Assert.Equal(stringBuilder.ToString(), "The quick br!wn d!g jumps !ver the lazy cat.");
+            Assert.AreEqual("The quick br!wn d!g jumps !ver the lazy cat.", stringBuilder.ToString());
             stringBuilder.Replace('!', 'o');                // All '!' -> 'o'
-            Assert.Equal(stringBuilder.ToString(), "The quick brown dog jumps over the lazy cat.");
+            Assert.AreEqual("The quick brown dog jumps over the lazy cat.", stringBuilder.ToString());
             stringBuilder.Replace("cat", "dog");            // All "cat" -> "dog"
-            Assert.Equal(stringBuilder.ToString(), "The quick brown dog jumps over the lazy dog.");
+            Assert.AreEqual("The quick brown dog jumps over the lazy dog.", stringBuilder.ToString());
             stringBuilder.Replace("dog", "fox", 15, 20);    // Some "dog" -> "fox"
-            Assert.Equal(stringBuilder.ToString(), "The quick brown fox jumps over the lazy dog.");
+            Assert.AreEqual("The quick brown fox jumps over the lazy dog.", stringBuilder.ToString());
         }
 
         [TestMethod]
@@ -139,17 +139,16 @@ namespace NFUnitTestStringBuilder
             stringBuilder.Clear();
             stringBuilder.Append("12345");
             stringBuilder.Replace("45", "def");
-            Assert.Equal(stringBuilder.ToString(), "123def");
+            Assert.AreEqual("123def", stringBuilder.ToString());
         }
 
         [TestMethod]
         public void Test_3_ReplaceTest_6()
         {
             stringBuilder.Clear();
-
             stringBuilder.Append("[{1234}]Test}]");
             stringBuilder.Replace("}]", "}]example");
-            Assert.Equal(stringBuilder.ToString(), "[{1234}]exampleTest}]example");
+            Assert.AreEqual("[{1234}]exampleTest}]example", stringBuilder.ToString());
         }
 
         [TestMethod]
@@ -166,7 +165,7 @@ namespace NFUnitTestStringBuilder
                 string sMFOutput = stringBuilder.ToString();
                 string sNativeOutput = NativeReplace(sRaw, sFind, sReplace);
 
-                Assert.Equal(sMFOutput, sNativeOutput);
+                Assert.AreEqual(sNativeOutput, sMFOutput);
             }
         }
 
@@ -232,7 +231,8 @@ namespace NFUnitTestStringBuilder
         {
             stringBuilder.Length = 0;
             stringBuilder.Capacity = 5;
-            Assert.Equal(stringBuilder.ToString(), string.Empty); string testString = "0000";
+            Assert.AreEqual(string.Empty, stringBuilder.ToString());
+            string testString = "0000";
             stringBuilder.Append(string.Empty);
             stringBuilder.Append(testString);
             stringBuilder.Append(string.Empty);
@@ -240,7 +240,7 @@ namespace NFUnitTestStringBuilder
             stringBuilder.Append("_");
             stringBuilder.Append("_");
             //result is true if capacity is > 5
-            Assert.True(stringBuilder.Capacity > 5);
+            Assert.IsTrue(stringBuilder.Capacity > 5);
         }
 
         [TestMethod]
@@ -250,7 +250,7 @@ namespace NFUnitTestStringBuilder
             stringBuilder.Capacity = 16;
             stringBuilder.Append("Hello from nanoFramework!");
             var outStr = stringBuilder.ToString(0, 5);
-            Assert.Equal("Hello", outStr);
+            Assert.AreEqual("Hello", outStr);
         }
 
         [TestMethod]
@@ -260,7 +260,7 @@ namespace NFUnitTestStringBuilder
             stringBuilder.Capacity = 16;
             stringBuilder.Append("Hello from nanoFramework!");
             var outStr = stringBuilder.ToString(0, 25);
-            Assert.Equal("Hello from nanoFramework!", outStr);
+            Assert.AreEqual("Hello from nanoFramework!", outStr);
         }
 
         [TestMethod]
@@ -270,7 +270,7 @@ namespace NFUnitTestStringBuilder
             stringBuilder.Capacity = 16;
             stringBuilder.Append("Hello from nanoFramework!");
             var outStr = stringBuilder.ToString(11, 13);
-            Assert.Equal("nanoFramework", outStr);
+            Assert.AreEqual("nanoFramework", outStr);
         }
 
         [TestMethod]
@@ -285,13 +285,13 @@ namespace NFUnitTestStringBuilder
             // Act
             sbvariable.Append(testSize);
             sbvariable.Append(testStr);
-            
+
             sbfixed.Append(testSize);
             sbfixed.Append(testStr);
 
             // Assert
-            Assert.Equal($"{testSize}{testStr}", sbvariable.ToString());
-            Assert.Equal($"{testSize}{testStr}", sbfixed.ToString());            
+            Assert.AreEqual($"{testSize}{testStr}", sbvariable.ToString());
+            Assert.AreEqual($"{testSize}{testStr}", sbfixed.ToString());
         }
 
         [TestMethod]
@@ -301,23 +301,147 @@ namespace NFUnitTestStringBuilder
             string testStr = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             string testStrCompiled = string.Empty;
             var sbfixed = new StringBuilder(256);
-            
+
             // Act
             sbfixed.Append(testStr);
             testStrCompiled += testStr;
 
             // Assert
-            Assert.Equal(testStrCompiled, sbfixed.ToString());
+            Assert.AreEqual(testStrCompiled, sbfixed.ToString());
 
             // Act
-            for(int i=0; i<20; i++)
+            for (int i = 0; i < 20; i++)
             {
                 sbfixed.Append(testStr);
                 testStrCompiled += testStr;
             }
 
+            // Assertf
+            Assert.AreEqual(testStrCompiled, sbfixed.ToString());
+        }
+
+
+        [TestMethod]
+        public void Test_FixedSizeInCreasingWithClear()
+        {
+            // Arrange
+            string testStr = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string testStrCompiled = string.Empty;
+            var sbfixed = new StringBuilder(256);
+
+            // Act
+            sbfixed.Append(testStr);
+            testStrCompiled += testStr;
+
             // Assert
-            Assert.Equal(testStrCompiled, sbfixed.ToString());
+            Assert.AreEqual(testStrCompiled, sbfixed.ToString());
+
+            // Act
+            for (int i = 0; i < 20; i++)
+            {
+                sbfixed.Clear();
+                sbfixed.Append(testStr);
+                testStrCompiled = testStr;
+            }
+
+            // Assert
+            Assert.AreEqual(testStrCompiled, sbfixed.ToString());
+        }
+
+
+        [TestMethod]
+        public void Test_FixedSizeInCreasingWithClearAndAppend()
+        {
+            // Arrange
+            string testStr = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string testStrCompiled = string.Empty;
+            var sbfixed = new StringBuilder(256);
+
+            // Act
+            sbfixed.Append(testStr);
+            testStrCompiled += testStr;
+
+            // Assert
+            Assert.AreEqual(testStrCompiled, sbfixed.ToString());
+
+            // Act
+            for (int i = 0; i < 20; i++)
+            {
+                sbfixed.Clear();
+                sbfixed.Append(testStr);
+                testStrCompiled = testStr;
+                sbfixed.Append(testStr);
+                testStrCompiled += testStr;
+            }
+
+            // Assert
+            Assert.AreEqual(testStrCompiled, sbfixed.ToString());
+        }
+
+        [TestMethod]
+        public void Test_FixedSizeInCreasingWithClearAndAppendAndRemove()
+        {
+            // Arrange
+            string testStr = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            string testStrCompiled = string.Empty;
+            var sbfixed = new StringBuilder(256);
+
+            // Act
+            sbfixed.Append(testStr);
+            testStrCompiled += testStr;
+
+            // Assert
+            Assert.AreEqual(testStrCompiled, sbfixed.ToString());
+
+            // Act
+            for (int i = 0; i < 20; i++)
+            {
+                sbfixed.Clear();
+                sbfixed.Append(testStr);
+                testStrCompiled = testStr;
+                sbfixed.Append(testStr);
+                testStrCompiled += testStr;
+                sbfixed.Remove(0, 5);
+                testStrCompiled = testStrCompiled.Substring(5);
+            }
+
+            // Assert
+            Assert.AreEqual(testStrCompiled, sbfixed.ToString());
+        }
+
+
+        [TestMethod]
+        public void Clear_Empty_CapacityNotZero()
+        {
+            var builder = new StringBuilder();
+            builder.Clear();
+            Assert.IsTrue(builder.Capacity != 0);
+        }
+
+        [TestMethod]
+        public void Clear_Empty_CapacityStaysUnchanged()
+        {
+            var sb = new StringBuilder(14);
+            sb.Clear();
+            Assert.AreEqual(14, sb.Capacity);
+        }
+
+        [TestMethod]
+        public void Clear_Full_CapacityStaysUnchanged()
+        {
+            var sb = new StringBuilder(14);
+            sb.Append("Hello World!!!");
+            sb.Clear();
+            Assert.AreEqual(14, sb.Capacity);
+        }
+
+        [TestMethod]
+        public void Clear_AtMaxCapacity_CapacityStaysUnchanged()
+        {
+            var builder = new StringBuilder(14, 14);
+            builder.Append("Hello World!!!");
+            builder.Clear();
+            Assert.AreEqual(14, builder.Capacity);
         }
     }
 
@@ -329,4 +453,3 @@ namespace NFUnitTestStringBuilder
         }
     }
 }
-
