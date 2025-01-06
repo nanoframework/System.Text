@@ -7,9 +7,16 @@
 namespace System.Text
 {
     /// <summary>
-    /// A Micro Framework port of the Full Framework StringBuilder. Contributed by Julius Friedman.
     /// Represents a mutable string of characters. This class cannot be inherited.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// This is a port of the full .NET Framework <see cref="StringBuilder"/> class.
+    /// </para>
+    /// <para>
+    /// Contributed to the .NETMF code base by Julius Friedman.
+    /// </para>
+    /// </remarks>
     public sealed class StringBuilder
     {
         #region Fields
@@ -173,12 +180,12 @@ namespace System.Text
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the StringBuilder class from the specified substring and capacity. 
+        /// Initializes a new instance of the <see cref="StringBuilder"/> class from the specified substring and capacity. 
         /// </summary>
         /// <param name="value">The string that contains the substring used to initialize the value of this instance. If value is null, the new StringBuilder will contain the empty string (that is, it contains Empty).</param>
         /// <param name="startIndex">The position within value where the substring begins.</param>
         /// <param name="length">The number of characters in the substring.</param>
-        /// <param name="capacity">The suggested starting size of the StringBuilder.</param>
+        /// <param name="capacity">The suggested starting size of the <see cref="StringBuilder"/>.</param>
         public unsafe StringBuilder(string value, int startIndex, int length, int capacity)
         {
             if (capacity < 0) throw new ArgumentOutOfRangeException("capacity");
@@ -209,17 +216,17 @@ namespace System.Text
         }
 
         /// <summary>
-        /// Initializes a new instance of the StringBuilder class using the specified string and capacity.
+        /// Initializes a new instance of  the <see cref="StringBuilder"/> class using the specified string and capacity.
         /// </summary>
         /// <param name="value">The string used to initialize the value of the instance. If value is null, the new StringBuilder will contain the empty string (that is, it contains Empty).</param>
-        /// <param name="capacity">The suggested starting size of the StringBuilder.</param>
+        /// <param name="capacity">The suggested starting size of the <see cref="StringBuilder"/>.</param>
         public StringBuilder(string value, int capacity)
             : this(value, 0, value != null ? value.Length : 0, capacity) { }
 
         /// <summary>
-        /// Initializes a new instance of the StringBuilder class that starts with a specified capacity and can grow to a specified maximum. 
+        /// Initializes a new instance of  the <see cref="StringBuilder"/> class that starts with a specified capacity and can grow to a specified maximum. 
         /// </summary>
-        /// <param name="capacity">The suggested starting size of the StringBuilder.</param>
+        /// <param name="capacity">The suggested starting size of the <see cref="StringBuilder"/>.</param>
         /// <param name="maxCapacity">The maximum number of characters the current string can contain.</param>
         public StringBuilder(int capacity, int maxCapacity)
         {
@@ -241,21 +248,21 @@ namespace System.Text
         }
 
         /// <summary>
-        /// Initializes a new instance of the StringBuilder class using the specified capacity. 
+        /// Initializes a new instance of  the <see cref="StringBuilder"/> class using the specified capacity. 
         /// </summary>
         /// <param name="capacity">The suggested starting size of this instance.</param>
         public StringBuilder(int capacity)
             : this(string.Empty, capacity) { }
 
         /// <summary>
-        /// Initializes a new instance of the StringBuilder class using the specified string. 
+        /// Initializes a new instance of  the <see cref="StringBuilder"/> class using the specified string. 
         /// </summary>
-        /// <param name="value">The string used to initialize the value of the instance. If value is null, the new StringBuilder will contain the empty string (that is, it contains Empty).</param>
+        /// <param name="value">The string used to initialize the value of the instance. If value is <see langword="null"/>, the new <see cref="StringBuilder"/> will contain the empty string (that is, it contains <see cref="String.Empty"/>).</param>
         public StringBuilder(string value)
             : this(value, 0x10) { }
 
         /// <summary>
-        /// Initializes a new instance of the StringBuilder class. 
+        /// Initializes a new instance of  the <see cref="StringBuilder"/> class. 
         /// </summary>
         public StringBuilder()
             : this(0x10) { }
@@ -265,9 +272,9 @@ namespace System.Text
         #region Methods
 
         /// <summary>
-        /// Removes all characters from the current StringBuilder instance. 
+        /// Removes all characters from the current <see cref="StringBuilder"/> instance. 
         /// </summary>
-        /// <returns>An object whose Length is 0 (zero).</returns>
+        /// <returns>An object whose <see cref="Length"/> is 0 (zero).</returns>
         public StringBuilder Clear()
         {
             Length = 0;
@@ -275,9 +282,9 @@ namespace System.Text
         }
 
         /// <summary>
-        /// Appends the string representation of a specified Boolean value to this instance. 
+        /// Appends the string representation of a specified <see cref="bool"/> value to this instance. 
         /// </summary>
-        /// <param name="value">The Boolean value to append.</param>
+        /// <param name="value">The <see cref="bool"/> value to append.</param>
         /// <returns>A reference to this instance after the append operation has completed.</returns>
         public StringBuilder Append(bool value)
         {
@@ -582,7 +589,7 @@ namespace System.Text
         }
 
         /// <summary>
-        /// Converts the value of this instance to a String. (Overrides Object.ToString().)
+        /// Converts the value of this instance to a String. (Overrides <see cref="Object.ToString"/>().)
         /// </summary>
         /// <returns>A string whose value is the same as this instance.</returns>
         public override string ToString()
@@ -722,10 +729,10 @@ namespace System.Text
         /// Replaces, within a substring of this instance, all occurrences of a specified character with another specified character. 
         /// </summary>
         /// <param name="oldChar">The character to replace. </param>
-        /// <param name="newChar">The character that replaces oldChar. </param>
-        /// <param name="startIndex">The position in this instance where the substring begins. </param>
+        /// <param name="newChar">The character that replaces <paramref name="oldChar"/>. </param>
+        /// <param name="startIndex">The position in this instance where the substring begins.</param>
         /// <param name="count">The length of the substring. </param>
-        /// <returns>A reference to this instance with oldChar replaced by newChar in the range from startIndex to startIndex + count -1.</returns>
+        /// <returns>A reference to this instance with <paramref name="oldChar"/> replaced by <paramref name="newChar"/> in the range from <paramref name="startIndex"/> to <paramref name="startIndex"/> + <paramref name="count"/> - 1.</returns>
         public StringBuilder Replace(char oldChar, char newChar, int startIndex, int count)
         {
             var length = Length;
@@ -762,8 +769,8 @@ namespace System.Text
         /// Replaces all occurrences of a specified character in this instance with another specified character. 
         /// </summary>
         /// <param name="oldChar">The character to replace.</param>
-        /// <param name="newChar">The character that replaces oldChar.</param>
-        /// <returns>A reference to this instance with oldChar replaced by newChar.</returns>
+        /// <param name="newChar">The character that replaces <paramref name="oldChar"/>.</param>
+        /// <returns>A reference to this instance with <paramref name="oldChar"/> replaced by <paramref name="newChar"/>.</returns>
         public StringBuilder Replace(char oldChar, char newChar)
         {
             return Replace(oldChar, newChar, 0, Length);
@@ -773,10 +780,10 @@ namespace System.Text
         /// Replaces, within a substring of this instance, all occurrences of a specified string with another specified string. 
         /// </summary>
         /// <param name="oldValue">The string to replace.</param>
-        /// <param name="newValue">The string that replaces oldValue, or null.</param>
+        /// <param name="newValue">The string that replaces <paramref name="oldValue"/>, or <see langword="null"/>.</param>
         /// <param name="startIndex">The position in this instance where the substring begins.</param>
         /// <param name="count">The length of the substring.</param>
-        /// <returns>A reference to this instance with all instances of oldValue replaced by newValue in the range from startIndex to startIndex + count - 1.</returns>
+        /// <returns>A reference to this instance with all instances of <paramref name="oldValue"/> replaced by <paramref name="newValue"/> in the range from <paramref name="startIndex"/> to <paramref name="startIndex"/> + <paramref name="count"/> - 1.</returns>
         public StringBuilder Replace(string oldValue, string newValue, int startIndex, int count)
         {
             var length = Length;
@@ -851,15 +858,15 @@ namespace System.Text
         /// Replaces all occurrences of a specified string in this instance with another specified string. 
         /// </summary>
         /// <param name="oldValue">The string to replace.</param>
-        /// <param name="newValue">The string that replaces oldValue, or null.</param>
-        /// <returns>A reference to this instance with all instances of oldValue replaced by newValue.</returns>
+        /// <param name="newValue">The string that replaces <paramref name="oldValue"/>, or <see langword="null"/>.</param>
+        /// <returns>A reference to this instance with all instances of <paramref name="oldValue"/> replaced by <paramref name="newValue"/>.</returns>
         public StringBuilder Replace(string oldValue, string newValue)
         {
             return Replace(oldValue, newValue, 0, Length);
         }
 
         /// <summary>
-        /// Appends a copy of the specified string followed by the default line terminator to the end of the current StringBuilder object.
+        /// Appends a copy of the specified string followed by the default line terminator to the end of the current <see cref="StringBuilder"/> object.
         /// </summary>
         /// <param name="str">A reference to this instance after the append operation has completed.</param>
         public StringBuilder AppendLine(string str)
@@ -869,7 +876,7 @@ namespace System.Text
         }
 
         /// <summary>
-        /// Appends the default line terminator to the end of the current StringBuilder object.
+        /// Appends the default line terminator to the end of the current <see cref="StringBuilder"/> object.
         /// </summary>
         /// <returns>A reference to this instance after the append operation has completed.</returns>
         public StringBuilder AppendLine()
