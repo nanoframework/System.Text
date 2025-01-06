@@ -112,6 +112,7 @@ jobs:
         Windows.Storage
         Windows.Storage.Streams
         System.IO.Streams
+        System.Text.RegularExpressions
    
 ##################################
 # report build failure to Discord
