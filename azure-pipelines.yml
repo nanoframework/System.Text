@@ -32,7 +32,13 @@ resources:
       type: github
       name: nanoframework/nf-tools
       endpoint: nanoframework
-     
+
+variables:
+  - name: DOTNET_NOLOGO
+    value: true
+  - name: nugetPackageName
+    value: 'nanoFramework.System.Text'
+
 jobs:
 
 ##############################
@@ -50,16 +56,12 @@ jobs:
 
   variables:
     - group: sign-client-credentials
-    - name: DOTNET_NOLOGO
-      value: true  
     - name: buildPlatform
       value: 'Any CPU'  
     - name: buildConfiguration
       value: 'Release'
     - name: solution
       value: 'nanoFramework.System.Text.sln'
-    - name: nugetPackageName
-      value: 'nanoFramework.System.Text' 
 
   steps:
 
@@ -86,14 +88,8 @@ jobs:
       eq(variables['UPDATE_DEPENDENTS'], 'true')
     )
 
-  dependsOn:
-  - Build_Library
-
   pool:
     vmImage: 'windows-latest'
-
-  variables:
-    DOTNET_NOLOGO: true
 
   steps:
 
@@ -102,7 +98,7 @@ jobs:
   # update dependents
   - template: azure-pipelines-templates/update-dependents.yml@templates  
     parameters:
-      waitBeforeUpdate: false
+      packageName: '$(nugetPackageName)'
       repositoriesToUpdate: |
         nanoFramework.Json
         nanoFramework.m2mqtt
