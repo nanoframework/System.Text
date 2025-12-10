@@ -1,29 +1,37 @@
+//
+// Copyright (c) .NET Foundation and Contributors
+// Portions Copyright (c) Microsoft Corporation.  All rights reserved.
+// See LICENSE file in the project root for full license information.
+//
 
 using nanoFramework.Benchmark;
 using nanoFramework.Benchmark.Attributes;
 using System;
-using System.Collections;
-using System.Diagnostics;
-using System.Text;
 
 namespace nanoFramework.System.Text.Benchmark
 {
-    [IterationCount(StringBenchmark.Iterations)]
+
+#pragma warning disable S101 // Types should be named in PascalCase
+
+    [IterationCount(Iterations)]
     public class StringBenchmark_10 : StringBenchmark
     {
         public StringBenchmark_10() : base(10) { }
     }
-    [IterationCount(StringBenchmark.Iterations)]
+
+    [IterationCount(Iterations)]
     public class StringBenchmark_100 : StringBenchmark
     {
         public StringBenchmark_100() : base(100) { }
     }
-    [IterationCount(StringBenchmark.Iterations)]
+
+    [IterationCount(Iterations)]
     public class StringBenchmark_1000 : StringBenchmark
     {
         public StringBenchmark_1000() : base(1000) { }
     }
-    [IterationCount(StringBenchmark.Iterations)]
+
+    [IterationCount(Iterations)]
     public class StringBenchmark_10000 : StringBenchmark
     {
         public StringBenchmark_10000() : base(10000) { }
@@ -31,33 +39,34 @@ namespace nanoFramework.System.Text.Benchmark
 
     [DebugLogger]
     [ConsoleParser]
-    [IterationCount(StringBenchmark.Iterations)]
-    public class StringBenchmark 
+    [IterationCount(Iterations)]
+    public class StringBenchmark
     {
         public const int Iterations = 100;
-
-        int _stringLength = 1;
-        char[] _tokenCharArray;
-        char[] _tokenCharArray2;
+        private readonly int _stringLength = 1;
+        private char[] _tokenCharArray;
+        private char[] _tokenCharArray2;
         private char[] _tokenCharArray3;
         private object _tokenCharArrayObject;
-        string _tokenString;
+        private string _tokenString;
         private string _tokenString2;
         private string _tokenString3;
         private string _tokenString4;
-        object[] _tokenObjectArray;
-        string[] _tokenStringArray;
+        private object[] _tokenObjectArray;
+        private string[] _tokenStringArray;
 
         public StringBenchmark()
         {
             Setup();
         }
+
         public StringBenchmark(int stringLength)
         {
             _stringLength = stringLength;
             Setup();
         }
-        void Setup()
+
+        private void Setup()
         {
             _tokenCharArray = GetTokenCharArray(_stringLength);
             _tokenCharArray2 = GetTokenCharArray(_stringLength);
@@ -71,316 +80,316 @@ namespace nanoFramework.System.Text.Benchmark
             _tokenStringArray = GetTokenStringArray(_stringLength);
         }
 
-
         [Benchmark]
         public void Ctor_Test_0()
         {
-            var test = new String(_tokenCharArray);
+            _ = new string(_tokenCharArray);
         }
 
         [Benchmark]
         public void Ctor_Test_1()
         {
-            var test = new String(_tokenCharArray[0], _stringLength);
+            _ = new string(_tokenCharArray[0], _stringLength);
         }
 
         [Benchmark]
         public void Ctor_Test_2()
         {
-            var test = new String(_tokenCharArray, 0, _stringLength);
+            _ = new string(_tokenCharArray, 0, _stringLength);
         }
 
         [Benchmark]
         public void Compare_Test()
         {
-            String token1 = new String(_tokenCharArray);
-            String token2 = new String(_tokenCharArray2);
-            var test = String.Compare(token1, token2);
+            string token1 = new string(_tokenCharArray);
+            string token2 = new string(_tokenCharArray2);
+            _ = string.Compare(token1, token2);
         }
 
         [Benchmark]
         public void Concat_Test_0()
         {
-            var test = String.Concat((object)_tokenCharArray);
+            _ = string.Concat((object)_tokenCharArray);
         }
 
         [Benchmark]
         public void Concat_Test_1()
         {
-            var test = String.Concat(_tokenObjectArray);
+            _ = string.Concat(_tokenObjectArray);
         }
 
         [Benchmark]
         public void Concat_Test_2()
         {
-            var test = String.Concat(_tokenStringArray);
+            _ = string.Concat(_tokenStringArray);
         }
 
         [Benchmark]
         public void Concat_Test_3()
         {
-            var test = String.Concat(_tokenCharArray, _tokenCharArray2);
+            _ = string.Concat(_tokenCharArray, _tokenCharArray2);
         }
 
         [Benchmark]
         public void Concat_Test_4()
         {
-            var test = String.Concat(_tokenString, _tokenString2);
+            _ = string.Concat(_tokenString, _tokenString2);
         }
 
         [Benchmark]
         public void Concat_Test_5()
         {
-            var test = String.Concat(_tokenCharArray, _tokenCharArray2, _tokenCharArray3);
+            _ = string.Concat(_tokenCharArray, _tokenCharArray2, _tokenCharArray3);
         }
 
         [Benchmark]
         public void Concat_Test_6()
         {
-            var test = String.Concat(_tokenString, _tokenString2, _tokenString3);
+            _ = string.Concat(_tokenString, _tokenString2, _tokenString3);
         }
 
         [Benchmark]
         public void Concat_Test_7()
         {
-            var test = String.Concat(_tokenString, _tokenString2, _tokenString3, _tokenString4);
+            _ = string.Concat(_tokenString, _tokenString2, _tokenString3, _tokenString4);
         }
 
         [Benchmark]
         public void Empty_Test()
         {
-            var test = String.Empty;
+            var test = string.Empty;
         }
 
         [Benchmark]
         public void Equals_Test_0()
         {
-            var test = String.Equals(_tokenCharArray, _tokenCharArray2);
+            _ = Equals(_tokenCharArray, _tokenCharArray2);
         }
 
         [Benchmark]
         public void Equals_Test_1()
         {
-            var test = String.Equals(_tokenString, _tokenString2);
+            _ = string.Equals(_tokenString, _tokenString2);
         }
         [Benchmark]
         public void Equals_Test_2()
         {
-            var test = _tokenString.Equals(_tokenCharArrayObject);
+            _ = _tokenString.Equals(_tokenCharArrayObject);
         }
 
         [Benchmark]
         public void Intern_Test()
         {
-            var test = String.Intern(_tokenString);
+            _ = string.Intern(_tokenString);
         }
 
         [Benchmark]
         public void IsInterned_Test()
         {
-            var test = String.IsInterned(_tokenString2);
+            _ = string.IsInterned(_tokenString2);
         }
 
         [Benchmark]
         public void ReferenceEquals_Test()
         {
-            var test = String.ReferenceEquals(_tokenCharArray, _tokenCharArray2);
+            _ = ReferenceEquals(_tokenCharArray, _tokenCharArray2);
         }
 
         [Benchmark]
         public void CompareTo_Test0()
         {
-            var test = _tokenString.CompareTo(_tokenCharArrayObject);
+            _ = _tokenString.CompareTo(_tokenCharArrayObject);
         }
 
         [Benchmark]
         public void CompareTo_Test1()
         {
-            var test = _tokenString.CompareTo(_tokenString2);
+            _ = _tokenString.CompareTo(_tokenString2);
         }
 
         [Benchmark]
         public void GetHashCode_Test()
         {
-            var test = _tokenString.GetHashCode();
+            _ = _tokenString.GetHashCode();
         }
 
         [Benchmark]
         public void GetType_Test()
         {
-            var test = _tokenString.GetType();
+            _ = _tokenString.GetType();
         }
 
         [Benchmark]
         public void IndexOf_Test_0()
         {
-            var test = _tokenString.IndexOf(_tokenCharArray[0]);
+            _ = _tokenString.IndexOf(_tokenCharArray[0]);
         }
 
         [Benchmark]
         public void IndexOf_Test_1()
         {
-            var test = _tokenString.IndexOf(_tokenString2);
+            _ = _tokenString.IndexOf(_tokenString2);
         }
 
         [Benchmark]
         public void IndexOf_Test_2()
         {
-            var test = _tokenString.IndexOf(_tokenCharArray[0], 0);
+            _ = _tokenString.IndexOf(_tokenCharArray[0], 0);
         }
 
         [Benchmark]
         public void IndexOf_Test_3()
         {
-            var test = _tokenString.IndexOf(_tokenString2, 0);
+            _ = _tokenString.IndexOf(_tokenString2, 0);
         }
 
         [Benchmark]
         public void IndexOf_Test_4()
         {
-            var test = _tokenString.IndexOf(_tokenCharArray[0], 0, 1);
+            _ = _tokenString.IndexOf(_tokenCharArray[0], 0, 1);
         }
 
         [Benchmark]
         public void IndexOf_Test_5()
         {
-            var test = _tokenString.IndexOf(_tokenString2, 0, 1);
+            _ = _tokenString.IndexOf(_tokenString2, 0, 1);
         }
 
         [Benchmark]
         public void IndexOfAny_Test_0()
         {
-            var test = _tokenString.IndexOfAny(_tokenCharArray);
+            _ = _tokenString.IndexOfAny(_tokenCharArray);
         }
 
         [Benchmark]
         public void IndexOfAny_Test_1()
         {
-            var test = _tokenString.IndexOfAny(_tokenCharArray, 0);
+            _ = _tokenString.IndexOfAny(_tokenCharArray, 0);
         }
 
         [Benchmark]
         public void IndexOfAny_Test_2()
         {
-            var test = _tokenString.IndexOfAny(_tokenCharArray, 0, 1);
+            _ = _tokenString.IndexOfAny(_tokenCharArray, 0, 1);
         }
 
         [Benchmark]
         public void LastIndexOf_Test_0()
         {
-            var test = _tokenString.LastIndexOf(_tokenCharArray[0]);
+            _ = _tokenString.LastIndexOf(_tokenCharArray[0]);
         }
 
         [Benchmark]
         public void LastIndexOf_Test_1()
         {
-            var test = _tokenString.LastIndexOf(_tokenString2);
+            _ = _tokenString.LastIndexOf(_tokenString2);
         }
 
         [Benchmark]
         public void LastIndexOf_Test_2()
         {
-            var test = _tokenString.LastIndexOf(_tokenCharArray[0], 0);
+            _ = _tokenString.LastIndexOf(_tokenCharArray[0], 0);
         }
 
         [Benchmark]
         public void LastIndexOf_Test_3()
         {
-            var test = _tokenString.LastIndexOf(_tokenString2, 0);
+            _ = _tokenString.LastIndexOf(_tokenString2, 0);
         }
 
         [Benchmark]
         public void LastIndexOf_Test_4()
         {
-            var test = _tokenString.LastIndexOf(_tokenCharArray[0], 0, 1);
+            _ = _tokenString.LastIndexOf(_tokenCharArray[0], 0, 1);
         }
 
         [Benchmark]
         public void LastIndexOf_Test_5()
         {
-            var test = _tokenString.LastIndexOf(_tokenString2, 0, 1);
+            _ = _tokenString.LastIndexOf(_tokenString2, 0, 1);
         }
 
         [Benchmark]
         public void Length_Test()
         {
-            var test = _tokenString.Length;
+            _ = _tokenString.Length;
         }
 
         [Benchmark]
         public void Split_Test_0()
         {
-            var test = _tokenString.Split(_tokenCharArray[0]);
+            _ = _tokenString.Split(_tokenCharArray[0]);
         }
 
         [Benchmark]
         public void SubString_Test_0()
         {
-            var test = _tokenString.Substring(0);
+            _ = _tokenString.Substring(0);
         }
 
         [Benchmark]
         public void SubString_Test_1()
         {
-            var test = _tokenString.Substring(0, 1);
+            _ = _tokenString.Substring(0, 1);
         }
 
         [Benchmark]
         public void ToCharArray_Test_0()
         {
-            var test = _tokenString.ToCharArray();
+            _ = _tokenString.ToCharArray();
         }
 
         [Benchmark]
         public void ToCharArray_Test_1()
         {
-            var test = _tokenString.ToCharArray(0, 1);
+            _ = _tokenString.ToCharArray(0, 1);
         }
 
         [Benchmark]
         public void ToLower_Test()
         {
-            var test = _tokenString.ToLower();
+            _ = _tokenString.ToLower();
         }
 
         [Benchmark]
         public void ToString_Test()
         {
-            var test = _tokenString.ToString();
+            _ = _tokenString.ToString();
         }
 
         [Benchmark]
         public void ToUpper_Test()
         {
-            var test = _tokenString.ToUpper();
+            _ = _tokenString.ToUpper();
         }
 
         [Benchmark]
         public void Trim_Test_0()
         {
-            var test = _tokenString.Trim();
+            _ = _tokenString.Trim();
         }
 
         [Benchmark]
         public void Trim_Test_1()
         {
-            var test = _tokenString.Trim(_tokenCharArray);
+            _ = _tokenString.Trim(_tokenCharArray);
         }
 
         [Benchmark]
         public void TrimEnd_Test()
         {
-            var test = _tokenString.TrimEnd();
+            _ = _tokenString.TrimEnd();
         }
 
         [Benchmark]
         public void TrimStart_Test()
         {
-            var test = _tokenString.TrimStart();
+            _ = _tokenString.TrimStart();
         }
 
+#pragma warning restore S101 // Types should be named in PascalCase
 
-        private char[] GetTokenCharArray(int length)
+        private static char[] GetTokenCharArray(int length)
         {
             char[] token = new char[length];
 
@@ -398,7 +407,8 @@ namespace nanoFramework.System.Text.Benchmark
 
             return token;
         }
-        private object[] GetTokenObjectArray(int length)
+
+        private static object[] GetTokenObjectArray(int length)
         {
             object[] token = new object[length];
 
@@ -417,7 +427,7 @@ namespace nanoFramework.System.Text.Benchmark
             return token;
         }
 
-        private string[] GetTokenStringArray(int length)
+        private static string[] GetTokenStringArray(int length)
         {
             string[] token = new string[length];
 
