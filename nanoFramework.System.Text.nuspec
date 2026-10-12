@@ -16,11 +16,11 @@
     <repository type="git" url="https://github.com/nanoframework/System.Text" commit="$commit$" />
     <copyright>Copyright (c) .NET Foundation and Contributors</copyright>
     <description>This package includes the System.Text assembly for nanoFramework C# projects.
-This package requires a target with System.Text v$nativeVersion$ (checksum $checksum$).</description>
-    <tags>nanoFramework C# csharp netmf netnf nanoFramework.System.Text</tags>
+This package requires a target with System.Text native contract hash $nativeContractHash$.</description>
+    <tags>nanoFramework C# csharp netmf netnf nanoFramework.System.Text nfnc-$nativeContractHash$</tags>
     <dependencies>
       <group targetFramework=".NETnanoFramework1.0">
-        <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.52" />
+        <dependency id="nanoFramework.CoreLibrary" version="2.0.0-preview.63" />
       </group>
     </dependencies>
   </metadata>
