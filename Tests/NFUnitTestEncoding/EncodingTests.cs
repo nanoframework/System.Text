@@ -457,6 +457,40 @@ namespace NFUnitTestStringBuilder
         }
 
         [TestMethod]
+        public void Utf8Decoder_IncompleteSequence()
+        {
+            Decoder decoder = Encoding.UTF8.GetDecoder();
+            byte[] bytes = { 0xE2, 0x82, 0xAC }; // U+20AC
+            char[] chars = new char[4];
+
+            // Only the first two bytes are available; preserve the incomplete prefix.
+            decoder.Convert(bytes, 0, 2, chars, 0, chars.Length, false,
+                out int bytesUsed, out int charsUsed, out bool completed);
+
+            Assert.AreEqual(0, bytesUsed);
+            Assert.AreEqual(0, charsUsed);
+            Assert.IsFalse(completed);
+
+            // Retry the unconsumed prefix with the complete character.
+            decoder.Convert(bytes, 0, 3, chars, 0, chars.Length, false,
+                out bytesUsed, out charsUsed, out completed);
+
+            Assert.AreEqual(3, bytesUsed);
+            Assert.AreEqual(1, charsUsed);
+            Assert.AreEqual('\u20AC', chars[0]);
+            Assert.IsTrue(completed);
+
+            // At EOF, consume a truncated sequence once and emit one replacement.
+            decoder.Convert(bytes, 0, 2, chars, 0, chars.Length, true,
+                out bytesUsed, out charsUsed, out completed);
+
+            Assert.AreEqual(2, bytesUsed);
+            Assert.AreEqual(1, charsUsed);
+            Assert.AreEqual('\uFFFD', chars[0]);
+            Assert.IsTrue(completed);
+        }
+
+        [TestMethod]
         public void Utf8EncodingTests_TestOverlongEncodingRejection()
         {
             // Ensure overlong encodings are rejected and replaced with U+FFFD
